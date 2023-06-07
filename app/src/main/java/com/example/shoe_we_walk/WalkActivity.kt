@@ -1,18 +1,22 @@
 package com.example.shoe_we_walk
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.os.SystemClock
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.shoe_we_walk.Util.Constant
+import com.example.shoe_we_walk.Util.Constant.mFormat
+import com.example.shoe_we_walk.Util.getDistance
 import com.example.shoe_we_walk.Util.setStatusBarTransparent
 import com.example.shoe_we_walk.databinding.ActivityWalkBinding
 import com.naver.maps.geometry.LatLng
@@ -22,6 +26,7 @@ import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.PolylineOverlay
 import com.naver.maps.map.util.FusedLocationSource
+import java.util.*
 
 class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListener{
 
@@ -31,28 +36,33 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
     }
 
     private lateinit var binding: ActivityWalkBinding
-
     private lateinit var nMap: NaverMap
     private lateinit var locationSource: FusedLocationSource    //사용자의 위치를 받기 위한 객체
-
     var sensorManager: SensorManager? = null
     lateinit var stepCountSensor: Sensor
-    var currentStep = 0
+
+    var currentStep = 0                                         //총 걸음수
+    private val startTime = SystemClock.elapsedRealtime()       //걸린 총 시간
+    private var endTime: Long = 0
+    var totalDistance = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWalkBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        this.setStatusBarTransparent()  //statusBar transparent
+        this.setStatusBarTransparent()          //statusBar transparent
 
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)    //onRequestPermissionsResult 호출하게 됨 permission의 결과에 따라 달라짐
 
-        val permission: Array<String> = arrayOf(android.Manifest.permission.ACTIVITY_RECOGNITION)
-
 //        permission check
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACTIVITY_RECOGNITION)
-            == PackageManager.PERMISSION_DENIED){ //권한이 없는 경우
+        val permission: Array<String> = arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACTIVITY_RECOGNITION)
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+            == PackageManager.PERMISSION_DENIED
+            ||ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_DENIED
+            ||ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACTIVITY_RECOGNITION)
+            == PackageManager.PERMISSION_DENIED){ // 셋 중 하나라도 권한이 없는 경우
 //            requestPermissions(permission, 0)
             ActivityCompat.requestPermissions(this, permission, ACTIVITY_RECOGNITION_REQUEST_CODE)
         }
@@ -64,10 +74,11 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
         Sensor.TYPE_STEP_COUNTER : 앱 종료와 관계없이 계속 기존의 값을 가지고 있다가 1씩 증가한 값을 리턴*/
 
 //        디바이스에 걸음 센서의 존재 여부 체크
-        if(stepCountSensor == null) {
+        /*if(stepCountSensor == null) {
             Toast.makeText(this, "No Step Sensor", Toast.LENGTH_SHORT).show()
-        }
+        }*/
         binding.stepCountTv.text = "0"
+        binding.stepCountTv.bringToFront()
 
         binding.mapMv.onCreate(savedInstanceState)
 
@@ -75,6 +86,15 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
 
         binding.exerciseFinishBtn.setOnClickListener {//운동종료
 //            운동정보를 가지고 종료해야 함! -> 시간, 거리, 걸음수를 이전 화면으로 보내줘야 함 -> 화면 이동 후 칼로리 계산
+            endTime = SystemClock.elapsedRealtime()
+            val totalTime = endTime - startTime
+
+            val resultIntent = Intent()
+            resultIntent.putExtra("총 시간", mFormat.format(Date(totalTime)))
+            resultIntent.putExtra("총 거리", totalDistance)
+            resultIntent.putExtra("총 걸음수", currentStep)
+            setResult(Activity.RESULT_OK, resultIntent)
+
             finish()
         }
     }
@@ -107,12 +127,16 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
                 if(polyline.map == null){       //PolylineOverlay를 맵에 표시
                     polyline.map = naverMap
                 }
+
+//                총 거리 계산
+                val index = coords.size-1
+                totalDistance += getDistance(coords[index-1].latitude,coords[index-1].longitude,coords[index].latitude,coords[index].longitude)
             }
         }
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if(event?.sensor?.type == Sensor.TYPE_STEP_DETECTOR){
+        if(event?.sensor?.type == Sensor.TYPE_STEP_DETECTOR){           //걸음수가 측정될 때 마다 currentStep을 증가시킴
             if(event.values[0] == 1.0f){
                 currentStep++
                 binding.stepCountTv.text = currentStep.toString()
@@ -130,9 +154,9 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
 
     override fun onResume() {
         //        센서 동작 딜레이 설정
-        if(stepCountSensor != null){
+        /*if(stepCountSensor != null){
             sensorManager?.registerListener(this, stepCountSensor, SensorManager.SENSOR_DELAY_NORMAL)
-        }
+        }*/
         binding.mapMv.onResume()
         super.onResume()
     }
@@ -175,6 +199,14 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
                 nMap.locationTrackingMode = LocationTrackingMode.None
             }
             return
+        }
+
+        if (requestCode == ACTIVITY_RECOGNITION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty()) {
+                for (grant in grantResults) {
+                    if (grant != PackageManager.PERMISSION_GRANTED) Toast.makeText(this, "권한 허용이 필요한 작업입니다 - 작동 불가!", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

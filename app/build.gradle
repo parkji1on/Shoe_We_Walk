@@ -51,4 +51,13 @@ dependencies {
     implementation 'com.naver.maps:map-sdk:3.16.2'
 //    gps
     implementation 'com.google.android.gms:play-services-location:16.0.0'
+//    Retrofit2
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+//    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+
+//    okHttp - http client에서 사용, 버그의 위치를 찾기 위해서 로그를 남김(client, server)
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
 }

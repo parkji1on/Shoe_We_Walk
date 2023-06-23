@@ -14,7 +14,6 @@ import android.os.SystemClock
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.shoe_we_walk.Util.Constant
 import com.example.shoe_we_walk.Util.Constant.mFormat
 import com.example.shoe_we_walk.Util.getDistance
 import com.example.shoe_we_walk.Util.setStatusBarTransparent
@@ -27,6 +26,7 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.PolylineOverlay
 import com.naver.maps.map.util.FusedLocationSource
 import java.util.*
+import kotlin.concurrent.schedule
 
 class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListener{
 
@@ -43,6 +43,7 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
 
     var currentStep = 0                                         //총 걸음수
     private val startTime = SystemClock.elapsedRealtime()       //걸린 총 시간
+//    private val startTime = System.currentTimeMillis()
     private var endTime: Long = 0
     var totalDistance = 0
 
@@ -87,7 +88,10 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
         binding.exerciseFinishBtn.setOnClickListener {//운동종료
 //            운동정보를 가지고 종료해야 함! -> 시간, 거리, 걸음수를 이전 화면으로 보내줘야 함 -> 화면 이동 후 칼로리 계산
             endTime = SystemClock.elapsedRealtime()
+//            endTime = System.currentTimeMillis()
             val totalTime = endTime - startTime
+//            Toast.makeText(this, "총시간 : $totalTime, 시작시간 : $startTime, 종료시간 : $endTime", Toast.LENGTH_SHORT).show()
+
 
             val resultIntent = Intent()
             resultIntent.putExtra("총 시간", mFormat.format(Date(totalTime)))
@@ -95,7 +99,12 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
             resultIntent.putExtra("총 걸음수", currentStep)
             setResult(Activity.RESULT_OK, resultIntent)
 
-            finish()
+            Toast.makeText(this, "총시간  : ${mFormat.format(Date(totalTime))}, 총거리: $totalDistance, 총 걸음수 : $currentStep", Toast.LENGTH_SHORT).show()
+
+            Timer().schedule(1000) {
+                finish()
+            }
+
         }
     }
 

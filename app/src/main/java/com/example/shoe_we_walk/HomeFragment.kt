@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,9 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     val WALK_ACTIVITY_REQUEST_CODE = 100
+    private val startTime: Long by lazy {
+        SystemClock.elapsedRealtime()
+    }
 
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
         if(result.resultCode == Activity.RESULT_OK && result.data != null){
@@ -58,11 +62,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.exerciseStartBtn.setOnClickListener {//운동 시작
-//            val intent = Intent(activity, WalkActivity::class.java) //제대로 동작하지 않음
-            val intent = Intent(requireContext(), WalkActivity::class.java)
-            launcher.launch(intent)
+
+
+            val intent = Intent(activity, WalkActivity::class.java) //제대로 동작하지 않음
+//            val intent = Intent(requireContext(), WalkActivity::class.java)
+//            launcher.launch(intent)
 //            startActivityForResult(intent, WALK_ACTIVITY_REQUEST_CODE)
-//            startActivity(intent)
+            startActivity(intent)
         }
     }
 

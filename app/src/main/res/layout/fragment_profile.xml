@@ -16,5 +16,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/work_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="운동 정보 등록"/>
+        <Button
+            android:id="@+id/work_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="운동 정보 가져오기"/>
+        <Button
+            android:id="@+id/id_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="유저 정보 가져오기"/>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

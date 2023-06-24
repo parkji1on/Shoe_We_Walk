@@ -14,7 +14,6 @@ import android.os.SystemClock
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.shoe_we_walk.Util.Constant.mFormat
 import com.example.shoe_we_walk.Util.getDistance
 import com.example.shoe_we_walk.Util.setStatusBarTransparent
 import com.example.shoe_we_walk.databinding.ActivityWalkBinding
@@ -26,7 +25,6 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.PolylineOverlay
 import com.naver.maps.map.util.FusedLocationSource
 import java.util.*
-import kotlin.concurrent.schedule
 
 class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListener{
     companion object {
@@ -93,10 +91,8 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
             resultIntent.putExtra("총 걸음수", currentStep)
             setResult(Activity.RESULT_OK, resultIntent)
 
-            Toast.makeText(this, "총시간  : ${mFormat.format(Date(totalTime))}, 총거리: $totalDistance, 총 걸음수 : $currentStep", Toast.LENGTH_SHORT).show()
-            Timer().schedule(1000) {//1초 뒤에 종료
-                finish()
-            }
+//            Timer().schedule(1000){}        //1초 뒤에 {}안의 내용 실행
+            finish()
 
         }
     }

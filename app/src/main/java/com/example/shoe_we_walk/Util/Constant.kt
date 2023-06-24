@@ -7,10 +7,6 @@ val TAG: String = "로그"
 
 const val BASE_URL = "http://3.37.186.27:8080/shoe_we_walk/"
 
-object Constant{
-    val mFormat = SimpleDateFormat("hh:mm:ss")          //걸린 시간을 나타내는 format
-}
-
 val user = Info(
     user_id = 7,
     name = "박지원",

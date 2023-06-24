@@ -21,7 +21,7 @@ fun insertUser(userRegisterRequest : UserRegisterRequest){
         }
 
         override fun onFailure(call: Call<UserIdResponse>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }
@@ -40,7 +40,7 @@ fun insertItem(user_id : Int, itemRegisterRequest : ItemRegisterRequest){
         }
 
         override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }
@@ -59,7 +59,7 @@ fun insertWork(user_id : Int, workRegisterRequest : WorkRegisterRequest){
         }
 
         override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }
@@ -78,7 +78,7 @@ fun selectUser(user_id : Int){
         }
 
         override fun onFailure(call: Call<UserDataResponse>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }
@@ -97,7 +97,7 @@ fun selectUser(user_id : Int){
         }
 
         override fun onFailure(call: Call<ItemDataResponse>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }
@@ -116,7 +116,7 @@ fun selectAllItem(user_id : Int){
         }
 
         override fun onFailure(call: Call<List<ItemDataResponse>>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }
@@ -135,7 +135,7 @@ fun selectWork(user_id : Int, work_date1 : String, work_date2 : String){
         }
 
         override fun onFailure(call: Call<List<WorkDataResponse>>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }
@@ -154,7 +154,7 @@ fun updateUser(user_id : Int, userRegisterRequest : UserRegisterRequest){
         }
 
         override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }
@@ -174,7 +174,7 @@ fun updateItem(user_id : Int, itemRegisterRequest : ItemRegisterRequest){
         }
 
         override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage)
+            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
         }
     })
 }

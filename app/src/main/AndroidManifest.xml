@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <!--    걸음수 측정을 위한 센서 동의-->
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+<!--    retrofit2 통신을 위한 인터넷 연결-->
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -19,7 +20,7 @@
         android:theme="@style/Theme.Shoe_We_Walk"
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
-<!--        retrofit 통신 단계에서 security policy가 뜸
+<!--        retrofit 통신 단계에서 security policy가 뜸 ->
 I/okhttp.OkHttpClient:  HTTP FAILED: java.net.UnknownServiceException: CLEARTEXT communication to 3.37.186.27 not permitted by network security policy
 D/CONNECTION FAILURE :: CLEARTEXT communication to 3.37.186.27 not permitted by network security policy
 

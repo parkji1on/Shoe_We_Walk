@@ -29,7 +29,6 @@ import java.util.*
 import kotlin.concurrent.schedule
 
 class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListener{
-
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
         private const val ACTIVITY_RECOGNITION_REQUEST_CODE = 100
@@ -38,14 +37,13 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
     private lateinit var binding: ActivityWalkBinding
     private lateinit var nMap: NaverMap
     private lateinit var locationSource: FusedLocationSource    //사용자의 위치를 받기 위한 객체
-    var sensorManager: SensorManager? = null
+    private var sensorManager: SensorManager? = null
     lateinit var stepCountSensor: Sensor
 
-    var currentStep = 0                                         //총 걸음수
-    private val startTime = SystemClock.elapsedRealtime()       //걸린 총 시간
-//    private val startTime = System.currentTimeMillis()
-    private var endTime: Long = 0
-    var totalDistance = 0
+    private var currentStep = 0                                         //총 걸음수
+    private val startTime = SystemClock.elapsedRealtime()       //걸린 총 시간 (다른 방법 : private val startTime = System.currentTimeMillis())
+    private var totalTime: Long = 0
+    private var totalDistance:Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +63,7 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
             ||ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACTIVITY_RECOGNITION)
             == PackageManager.PERMISSION_DENIED){ // 셋 중 하나라도 권한이 없는 경우
 //            requestPermissions(permission, 0)
-            ActivityCompat.requestPermissions(this, permission, ACTIVITY_RECOGNITION_REQUEST_CODE)
+            ActivityCompat.requestPermissions(this, permission, ACTIVITY_RECOGNITION_REQUEST_CODE)          // permission request
         }
 
 //        센서 세팅
@@ -75,9 +73,9 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
         Sensor.TYPE_STEP_COUNTER : 앱 종료와 관계없이 계속 기존의 값을 가지고 있다가 1씩 증가한 값을 리턴*/
 
 //        디바이스에 걸음 센서의 존재 여부 체크
-        /*if(stepCountSensor == null) {
+        if(stepCountSensor == null) {
             Toast.makeText(this, "No Step Sensor", Toast.LENGTH_SHORT).show()
-        }*/
+        }
         binding.stepCountTv.text = "0"
         binding.stepCountTv.bringToFront()
 
@@ -87,21 +85,16 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
 
         binding.exerciseFinishBtn.setOnClickListener {//운동종료
 //            운동정보를 가지고 종료해야 함! -> 시간, 거리, 걸음수를 이전 화면으로 보내줘야 함 -> 화면 이동 후 칼로리 계산
-            endTime = SystemClock.elapsedRealtime()
-//            endTime = System.currentTimeMillis()
-            val totalTime = endTime - startTime
-//            Toast.makeText(this, "총시간 : $totalTime, 시작시간 : $startTime, 종료시간 : $endTime", Toast.LENGTH_SHORT).show()
-
+            totalTime = SystemClock.elapsedRealtime() - startTime           //ms단위로 나온다.
 
             val resultIntent = Intent()
-            resultIntent.putExtra("총 시간", mFormat.format(Date(totalTime)))
+            resultIntent.putExtra("총 시간", totalTime.toInt())
             resultIntent.putExtra("총 거리", totalDistance)
             resultIntent.putExtra("총 걸음수", currentStep)
             setResult(Activity.RESULT_OK, resultIntent)
 
             Toast.makeText(this, "총시간  : ${mFormat.format(Date(totalTime))}, 총거리: $totalDistance, 총 걸음수 : $currentStep", Toast.LENGTH_SHORT).show()
-
-            Timer().schedule(1000) {
+            Timer().schedule(1000) {//1초 뒤에 종료
                 finish()
             }
 
@@ -113,7 +106,7 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
         naverMap.locationSource = locationSource
 
         naverMap.mapType = NaverMap.MapType.Basic
-        val marker = Marker()                           //naverMap marker
+//        val marker = Marker()                           //naverMap marker
         val polyline = PolylineOverlay()                //naverMap shape->PolylineOverlay
         val coords = mutableListOf<LatLng>()            //PolylineOverlay의 coords속성
 
@@ -124,10 +117,10 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
         naverMap.addOnLocationChangeListener { location ->
 
 //            사용자의 가장 마지막 위치 표시 (Marker)
-            marker.position = LatLng(location.latitude, location.longitude)
+            /*marker.position = LatLng(location.latitude, location.longitude)
             if(marker.map == null){     //marker를 맵에 표시
                 marker.map = naverMap
-            }
+            }*/
 
 //            사용자의 이동 경로 표시 (PolylineOverlay)
             coords.add(LatLng(location.latitude, location.longitude))
@@ -162,15 +155,16 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
     }
 
     override fun onResume() {
-        //        센서 동작 딜레이 설정
-        /*if(stepCountSensor != null){
+//         센서 동작 딜레이 설정 -> 반드시 설정해줘야한다 안하면 제대로 동작 X
+        if(stepCountSensor != null){
             sensorManager?.registerListener(this, stepCountSensor, SensorManager.SENSOR_DELAY_NORMAL)
-        }*/
+        }
         binding.mapMv.onResume()
         super.onResume()
     }
 
     override fun onPause() {
+//        step sensor 해제
         sensorManager?.unregisterListener(this)
         binding.mapMv.onPause()
         super.onPause()

@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
+import com.example.shoe_we_walk.Data.Auth.loginflag
+import com.example.shoe_we_walk.Data.Auth.nickname
+import com.example.shoe_we_walk.Data.Auth.profileImage
+import com.example.shoe_we_walk.Util.APP_KEY
 import com.example.shoe_we_walk.databinding.ActivityLoginBinding
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
@@ -16,7 +19,6 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
-import com.squareup.picasso.Picasso
 
 
 /*
@@ -51,9 +53,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private val mCallback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
         if (error != null) {
-            Log.e(Constants.TAG, "로그인 실패 $error")
+            Log.e(TAG, "로그인 실패 $error")
         } else if (token != null) {
-            Log.d(Constants.TAG, "로그인 성공 ${token.accessToken}")
+            Log.d(TAG, "로그인 성공 ${token.accessToken}")
 
 
             UserApiClient.instance.me { user, error ->
@@ -61,10 +63,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     Log.e(TAG, "사용자 정보 요청 실패 $error")
                 } else if (user != null) {
                     Log.e(TAG, "사용자 정보 요청 성공 : $user")
-                    MainActivity.nickname = user.kakaoAccount?.profile?.nickname.toString()
+                    nickname = user.kakaoAccount?.profile?.nickname.toString()
                     /*binding.txtAge.text = user.kakaoAccount?.ageRange.toString()
                     binding.txtEmail.text = user.kakaoAccount?.email*/
-                    MainActivity.profileImage = user.kakaoAccount?.profile?.profileImageUrl
+                    profileImage = user.kakaoAccount?.profile?.profileImageUrl
                 }
             }
             nextMainActivity()
@@ -74,9 +76,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Toast.makeText(this, "ASD", Toast.LENGTH_SHORT).show()
-        Log.d(Constants.TAG, "keyhash : ${Utility.getKeyHash(this)}")
+        Log.d(TAG, "keyhash : ${Utility.getKeyHash(this)}")
 
-        KakaoSdk.init(this, Constants.APP_KEY)
+        KakaoSdk.init(this, APP_KEY)
         if (AuthApiClient.instance.hasToken()) {
             UserApiClient.instance.accessTokenInfo { _, error ->
                 if (error == null) {
@@ -85,11 +87,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             Log.e(TAG, "사용자 정보 요청 실패 $error")
                         } else if (user != null) {
                             Log.e(TAG, "사용자 정보 요청 성공 : $user")
-                            MainActivity.nickname = user.kakaoAccount?.profile?.nickname.toString()
+                            nickname = user.kakaoAccount?.profile?.nickname.toString()
                             /*binding.txtAge.text = user.kakaoAccount?.ageRange.toString()
                             binding.txtEmail.text = user.kakaoAccount?.email*/
-                            MainActivity.profileImage = user.kakaoAccount?.profile?.profileImageUrl //이게진짜
-                            MainActivity.loginflag = true
+                            profileImage = user.kakaoAccount?.profile?.profileImageUrl //이게진짜
+                            loginflag = true
                         }
                     }
 
@@ -109,14 +111,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                     UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
                         if (error != null) {
-                            Log.e(Constants.TAG, "로그인 실패 $error")
+                            Log.e(TAG, "로그인 실패 $error")
                             if (error is ClientError && error.reason == ClientErrorCause.Cancelled) {
                                 return@loginWithKakaoTalk
                             } else {
                                 UserApiClient.instance.loginWithKakaoAccount(this, callback = mCallback)
                             }
                         } else if (token != null) {
-                            Log.d(Constants.TAG, "로그인 성공 ${token.accessToken}")
+                            Log.d(TAG, "로그인 성공 ${token.accessToken}")
                             Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
                             nextMainActivity()
                         }

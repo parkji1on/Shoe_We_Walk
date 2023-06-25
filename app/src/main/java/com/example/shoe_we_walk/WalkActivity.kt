@@ -24,7 +24,6 @@ import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.PolylineOverlay
 import com.naver.maps.map.util.FusedLocationSource
-import java.util.*
 
 class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListener{
     companion object {
@@ -36,7 +35,7 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
     private lateinit var nMap: NaverMap
     private lateinit var locationSource: FusedLocationSource    //사용자의 위치를 받기 위한 객체
     private var sensorManager: SensorManager? = null
-    lateinit var stepCountSensor: Sensor
+    private lateinit var stepCountSensor: Sensor
 
     private var currentStep = 0                                         //총 걸음수
     private val startTime = SystemClock.elapsedRealtime()       //걸린 총 시간 (다른 방법 : private val startTime = System.currentTimeMillis())
@@ -66,7 +65,7 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
 
 //        센서 세팅
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        stepCountSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)
+        stepCountSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)!!
         /*Sensor.TYPE_STEP_DETECTOR : 리턴 값이 무조건 1, 앱이 종료되면 다시 0부터 시작?
         Sensor.TYPE_STEP_COUNTER : 앱 종료와 관계없이 계속 기존의 값을 가지고 있다가 1씩 증가한 값을 리턴*/
 

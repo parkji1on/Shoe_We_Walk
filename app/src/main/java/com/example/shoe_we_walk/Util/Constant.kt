@@ -3,10 +3,9 @@ package com.example.shoe_we_walk.Util
 import android.icu.text.SimpleDateFormat
 import com.example.shoe_we_walk.Data.Info
 
-val TAG: String = "로그"
-
+const val TAG = "LOGIN"
+const val APP_KEY = "a7d658be72e6d8d57c12f265b829d759"
 const val BASE_URL = "http://3.37.186.27:8080/shoe_we_walk/"
-
 val user = Info(
     user_id = 7,
     name = "박지원",

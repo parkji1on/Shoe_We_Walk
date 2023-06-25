@@ -15,12 +15,10 @@ import com.example.shoe_we_walk.R
 import com.example.shoe_we_walk.adapter.JibbitsAdapter
 import com.example.shoe_we_walk.adapter.JibbitsData
 import com.example.shoe_we_walk.databinding.FragmentMarketBinding
-import com.example.shoe_we_walk.dialog.JibbitsBuyDialog
 
 class MarketFragment : Fragment() {
 
     private var _binding: FragmentMarketBinding? = null
-
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -144,6 +142,4 @@ class MarketFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

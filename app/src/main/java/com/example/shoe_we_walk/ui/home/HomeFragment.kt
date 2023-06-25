@@ -13,12 +13,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.shoe_we_walk.*
+import com.example.shoe_we_walk.Data.Auth.loginflag
+import com.example.shoe_we_walk.Data.Auth.nickname
+import com.example.shoe_we_walk.Data.Auth.profileImage
 import com.example.shoe_we_walk.Data.Work
 import com.example.shoe_we_walk.Util.CircleTransformation
 import com.example.shoe_we_walk.Util.FinishWorkDialog
 import com.example.shoe_we_walk.Util.getCalorie
 import com.example.shoe_we_walk.Util.user
 import com.example.shoe_we_walk.databinding.FragmentHomeBinding
+import com.example.shoe_we_walk.databinding.FragmentMarketBinding
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
 import java.time.LocalDateTime
@@ -28,8 +32,14 @@ import kotlin.math.min
 
 class HomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+//    private lateinit var binding: FragmentHomeBinding
     private lateinit var startTime: String
+
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
         if(result.resultCode == Activity.RESULT_OK && result.data != null) {
             val totalTime = result.data!!.getIntExtra("총 시간", 0)            //Int -> ms
@@ -55,7 +65,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -80,14 +90,19 @@ class HomeFragment : Fragment() {
             startActivity(intent)//로그인 시작
         }
 
-        if(MainActivity.loginflag) {
-            binding.root.findViewById<TextView>(R.id.HomeUserTitleText).text = MainActivity.nickname
+        if(loginflag) {
+            binding.root.findViewById<TextView>(R.id.HomeUserTitleText).text = nickname
 
             val imageView :ImageView = binding.root.findViewById(R.id.HomeProfileImage)
             Picasso.get()
-                .load(MainActivity.profileImage)
+                .load(profileImage)
                 .transform(CircleTransformation())
                 .into(imageView)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

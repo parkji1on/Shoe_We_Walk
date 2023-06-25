@@ -10,21 +10,6 @@ import com.example.shoe_we_walk.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    companion object {
-        var loginflag = false
-
-        var user_name :String = ""
-        var nickname :String = ""
-        var gender :String = ""
-        var age :Int = 0
-        var height :Int = 0
-        var weight :Float = 0.0F
-        var profileImage :String? = null
-
-        var coin :Int = 0
-        var total_item_cnt :Int = 0
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

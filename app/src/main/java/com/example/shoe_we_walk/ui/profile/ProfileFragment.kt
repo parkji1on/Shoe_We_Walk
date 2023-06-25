@@ -8,10 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.shoe_we_walk.MainActivity
+import com.example.shoe_we_walk.Data.Auth.nickname
+import com.example.shoe_we_walk.Data.Auth.profileImage
 import com.example.shoe_we_walk.R
+import com.example.shoe_we_walk.Util.CircleTransformation
 import com.example.shoe_we_walk.databinding.FragmentProfileBinding
-import com.example.shoe_we_walk.ui.home.CircleTransformation
 import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
@@ -34,10 +35,10 @@ class ProfileFragment : Fragment() {
         val root: View = binding.root
 
         val titlename :TextView = binding.root.findViewById(R.id.ProfileUserTitleText)
-        titlename.text = MainActivity.nickname
+        titlename.text = nickname
         val imageView : ImageView = binding.root.findViewById(R.id.ProfileUserImage)
         Picasso.get()
-            .load(MainActivity.profileImage)
+            .load(profileImage)
             .transform(CircleTransformation())
             .into(imageView)
 

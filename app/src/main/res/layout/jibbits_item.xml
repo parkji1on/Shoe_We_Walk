@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="110dp">
+
+    <ImageView
+        android:id="@+id/itemCircle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/market_jibbitscircle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/itemJibbits"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/jibbits_bee_front"
+        app:layout_constraintBottom_toBottomOf="@+id/itemCircle"
+        app:layout_constraintEnd_toEndOf="@+id/itemCircle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/itemCircle"
+        app:layout_constraintTop_toTopOf="@+id/itemCircle"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/itemJibbitsPriceBox"
+        android:layout_width="48dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/itemCircle"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="@+id/itemCircle"
+        app:srcCompat="@drawable/market_jibbitspricebox" />
+
+    <ImageView
+        android:id="@+id/itemJibbitsPriceCoinImage"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/sww_coin" />
+
+    <TextView
+        android:id="@+id/itemJibbitsPriceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/itemJibbitsPriceBox"
+        app:layout_constraintEnd_toEndOf="@+id/itemJibbitsPriceBox"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/itemJibbitsPriceCoinImage"
+        app:layout_constraintTop_toTopOf="@+id/itemJibbitsPriceBox"
+        app:layout_constraintVertical_bias="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>

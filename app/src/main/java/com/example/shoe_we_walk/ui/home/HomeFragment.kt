@@ -1,21 +1,30 @@
-package com.example.shoe_we_walk
+package com.example.shoe_we_walk.ui.home
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.*
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.shoe_we_walk.*
 import com.example.shoe_we_walk.Data.Work
-import com.example.shoe_we_walk.Data.WorkRegisterRequest
-import com.example.shoe_we_walk.Retrofit.insertWork
-import com.example.shoe_we_walk.Util.*
+import com.example.shoe_we_walk.Util.CircleTransformation
+import com.example.shoe_we_walk.Util.FinishWorkDialog
+import com.example.shoe_we_walk.Util.getCalorie
+import com.example.shoe_we_walk.Util.user
 import com.example.shoe_we_walk.databinding.FragmentHomeBinding
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Transformation
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Collections.min
+import kotlin.math.min
 
 class HomeFragment : Fragment() {
 
@@ -38,7 +47,7 @@ class HomeFragment : Fragment() {
             dlg.show(parentFragmentManager, "Work Finished!")
 
         } else {
-        Toast.makeText(context, "데이터가 전달되지 못했습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "데이터가 전달되지 못했습니다.", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -57,6 +66,28 @@ class HomeFragment : Fragment() {
             startTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))       //시작시간 저장
             val intent = Intent(requireContext(), WalkActivity::class.java)
             launcher.launch(intent)
+        }
+        binding.HomeEditShoesText.setOnClickListener{
+            val intent = Intent(activity, EditshoesActivity::class.java)
+            startActivity(intent)//신발 수정으로 이동
+        }
+        binding.HomeShoesImage.setOnClickListener {
+            val intent = Intent(activity, EditshoesActivity::class.java)
+            startActivity(intent)//신발 수정으로 이동
+        }
+        binding.HomeUserTitleText.setOnClickListener{
+            val intent = Intent(activity, LoginActivity::class.java)
+            startActivity(intent)//로그인 시작
+        }
+
+        if(MainActivity.loginflag) {
+            binding.root.findViewById<TextView>(R.id.HomeUserTitleText).text = MainActivity.nickname
+
+            val imageView :ImageView = binding.root.findViewById(R.id.HomeProfileImage)
+            Picasso.get()
+                .load(MainActivity.profileImage)
+                .transform(CircleTransformation())
+                .into(imageView)
         }
     }
 }

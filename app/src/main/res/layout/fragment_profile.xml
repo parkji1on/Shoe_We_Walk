@@ -4,42 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    android:background="@color/SWW_Theme_Color"
+    tools:context=".ui.profile.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/ProfileUserBox"
+        android:layout_width="350dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/home_profilebox"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/ProfileUserImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="15dp"
+        android:alpha="0.8"
+        app:layout_constraintBottom_toBottomOf="@+id/ProfileUserBox"
+        app:layout_constraintStart_toStartOf="@+id/ProfileUserBox"
+        app:layout_constraintTop_toTopOf="@+id/ProfileUserBox"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/home_profile_image" />
+
+    <TextView
+        android:id="@+id/ProfileUserTitleText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="27dp"
+        android:layout_marginStart="15dp"
+        android:text="로그인 하세요"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ProfileUserBox"
+        app:layout_constraintStart_toEndOf="@+id/ProfileUserImage" />
+
+    <TextView
+        android:id="@+id/ProfileTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용자 프로필"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ProfileUserTitleText"
+        app:layout_constraintStart_toEndOf="@+id/ProfileUserImage" />
+
+    <ImageView
+        android:id="@+id/ProfileWeightBox"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/login_textbox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/work_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="운동 정보 등록"/>
-        <Button
-            android:id="@+id/work_get"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="운동 정보 가져오기"/>
-        <Button
-            android:id="@+id/id_get"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="유저 정보 가져오기"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileHightBox" />
 
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/ProfileHightBox"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/login_textbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileGenderBox" />
 
+    <ImageView
+        android:id="@+id/ProfileNameBox"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/login_textbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileUserBox" />
+
+    <ImageView
+        android:id="@+id/ProfileGenderBox"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/login_textbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileNameBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

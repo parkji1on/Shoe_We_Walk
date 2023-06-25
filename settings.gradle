@@ -10,10 +10,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
         // 네이버 지도 저장소
         maven {
             url 'https://naver.jfrog.io/artifactory/maven/'
         }
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
 rootProject.name = "Shoe_We_Walk"

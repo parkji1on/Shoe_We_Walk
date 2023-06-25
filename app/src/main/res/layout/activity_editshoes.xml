@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/SWW_Theme_Color"
+    tools:context=".EditshoesActivity">
+
+    <TextView
+        android:id="@+id/EditShoesAbleJibbitsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="사용가능한 지비츠"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeShoesBoxImage" />
+
+    <TextView
+        android:id="@+id/editShoesAbleJibbitsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="사용한 지비츠"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditShoesAbleJibbitsBox" />
+
+    <ImageView
+        android:id="@+id/EditShoesAbleJibbitsBox"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/market_jibbitsnewbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditShoesAbleJibbitsText" />
+
+    <ImageView
+        android:id="@+id/editShoesAbleJibbitsBox"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/market_jibbitsnewbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editShoesAbleJibbitsText" />
+
+    <TextView
+        android:id="@+id/EditShoesTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="님의 신발"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/homeShoesBoxImage"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/home_shoesbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditShoesTitleText" />
+
+    <ImageView
+        android:id="@+id/homeShoesImage"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/shoes_basic"
+        app:layout_constraintBottom_toBottomOf="@+id/homeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/homeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/homeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/homeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/EditShoesAbleJibbitsRecyclerview"
+        android:layout_width="330dp"
+        android:layout_height="110dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/EditShoesAbleJibbitsBox"
+        app:layout_constraintEnd_toEndOf="@+id/EditShoesAbleJibbitsBox"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/EditShoesAbleJibbitsBox"
+        app:layout_constraintTop_toTopOf="@+id/EditShoesAbleJibbitsBox"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/EditShoesUsedJibbitsRecyclerview"
+        android:layout_width="330dp"
+        android:layout_height="110dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/editShoesAbleJibbitsBox"
+        app:layout_constraintEnd_toEndOf="@+id/editShoesAbleJibbitsBox"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/editShoesAbleJibbitsBox"
+        app:layout_constraintTop_toTopOf="@+id/editShoesAbleJibbitsBox"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

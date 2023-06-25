@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="370dp"
+    android:layout_height="420dp"
+    android:background="@drawable/dialog_jibbits_buy_background">
+
+    <TextView
+        android:id="@+id/Dialog_JibbitsNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:alpha="0.8"
+        android:text="이름"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Dialog_JibbitsNameBox"
+        app:layout_constraintStart_toStartOf="@+id/Dialog_JibbitsNameBox" />
+
+    <TextView
+        android:id="@+id/Dialog_JibbitsPriceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:alpha="0.8"
+        android:text="가격"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Dialog_PriceBox"
+        app:layout_constraintStart_toStartOf="@+id/Dialog_PriceBox" />
+
+    <TextView
+        android:id="@+id/Dialog_JibbitsBuyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지비츠 구매"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Dialog_ItemCircle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/Dialog_ItemCircle"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/market_jibbitscircle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/Dialog_ItemImage"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:src="@drawable/jibbits_bee_front"
+        app:layout_constraintBottom_toBottomOf="@+id/Dialog_ItemCircle"
+        app:layout_constraintEnd_toEndOf="@+id/Dialog_ItemCircle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/Dialog_ItemCircle"
+        app:layout_constraintTop_toTopOf="@+id/Dialog_ItemCircle"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/Dialog_PriceBox"
+        android:layout_width="153dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Dialog_JibbitsNameBox"
+        app:srcCompat="@drawable/dialog_jibbits_pricebox" />
+
+    <ImageView
+        android:id="@+id/Dialog_JibbitsNameBox"
+        android:layout_width="153dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Dialog_PriceBox"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/dialog_jibbits_pricebox" />
+
+    <TextView
+        android:id="@+id/Dialog_ItemPriceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1,000"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Dialog_PriceBox"
+        app:layout_constraintEnd_toEndOf="@+id/Dialog_PriceBox"
+        app:layout_constraintTop_toTopOf="@+id/Dialog_PriceBox"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/Dialog_ItemNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/maple_light"
+        android:text="행복했꿀벌"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginRight="15dp"
+        app:layout_constraintEnd_toEndOf="@id/Dialog_JibbitsNameBox"
+        app:layout_constraintBottom_toBottomOf="@+id/Dialog_JibbitsNameBox"
+        app:layout_constraintTop_toTopOf="@+id/Dialog_JibbitsNameBox"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/marketPricecoinImage"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/sww_coin"
+        app:layout_goneMarginStart="10dp"
+        app:layout_constraintStart_toStartOf="@id/Dialog_PriceBox"
+        app:layout_constraintBottom_toBottomOf="@+id/Dialog_PriceBox"
+        app:layout_constraintTop_toTopOf="@+id/Dialog_PriceBox"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/Dialog_BuyButton"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Dialog_CancelButton"
+        app:srcCompat="@drawable/dialog_jibbits_buy_okbtn" />
+
+    <ImageView
+        android:id="@+id/Dialog_CancelButton"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Dialog_BuyButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/dialog_jibbits_buy_cancelbtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

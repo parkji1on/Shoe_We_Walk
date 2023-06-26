@@ -64,6 +64,8 @@ dependencies {
 //    okHttp - http client에서 사용, 버그의 위치를 찾기 위해서 로그를 남김(client, server)
     implementation "com.squareup.okhttp3:okhttp:4.10.0"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+//    chart library - MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 //    joonbo2
     implementation "com.kakao.sdk:v2-user:2.14.0" // 카카오 로그인

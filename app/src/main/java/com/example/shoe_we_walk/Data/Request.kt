@@ -1,12 +1,12 @@
 package com.example.shoe_we_walk.Data
 
 data class UserRegisterRequest(
+    var user_id : Long,
     var name : String,
-    var nickname : String,
     var gender : String,
     var age : Int,
     var height : Int,
-    var weight : Float
+    var weight : Double
 )
 
 data class WorkRegisterRequest(
@@ -20,4 +20,19 @@ data class ItemRegisterRequest(
     var item_id : Int,
     var item_loc : Int,
     var is_attached : Int
+)
+
+
+data class ItemLocRegisterRequest(
+    var user_id : Long,
+    var loc_1 : Int,
+    var loc_2 : Int,
+    var loc_3 : Int,
+    var loc_4 : Int,
+    var loc_5 : Int,
+    var loc_6 : Int,
+    var loc_7 : Int,
+    var loc_8 : Int,
+    var loc_9 : Int,
+    var loc_10 : Int
 )

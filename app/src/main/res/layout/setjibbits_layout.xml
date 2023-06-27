@@ -10,6 +10,7 @@
         android:id="@+id/Dialog_JibbitsBuyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="지비츠 장착"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -17,10 +18,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Dialog_HelperIDXText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/Dialog_RightImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Dialog_LeftImage"
+        app:layout_constraintTop_toBottomOf="@+id/Dialog_MainShoesImage" />
 
     <ImageView
-        android:id="@+id/Dialog_BuyButton"
+        android:id="@+id/Dialog_SetButton"
         android:layout_width="120dp"
         android:layout_height="48dp"
         android:layout_marginBottom="28dp"
@@ -37,15 +52,52 @@
         android:layout_marginBottom="28dp"
         android:src="@drawable/dialog_jibbits_buy_cancelbtn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Dialog_BuyButton"
+        app:layout_constraintEnd_toStartOf="@+id/Dialog_SetButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/Dialog_MainShoesImage"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        app:srcCompat="@drawable/shoes_basic"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="97dp" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Dialog_JibbitsBuyTitle"
+        app:srcCompat="@drawable/shoes_basic" />
+
+    <ImageView
+        android:id="@+id/Dialog_MainHelperImage"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Dialog_JibbitsBuyTitle"
+        app:srcCompat="@drawable/jibbits_guide_1" />
+
+    <ImageView
+        android:id="@+id/Dialog_LeftImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/Dialog_CancelButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Dialog_MainShoesImage"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/dialog_arrowleftimage" />
+
+    <ImageView
+        android:id="@+id/Dialog_RightImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/Dialog_SetButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Dialog_MainShoesImage"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/dialog_arrowrightimage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

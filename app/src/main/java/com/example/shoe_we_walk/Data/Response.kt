@@ -23,12 +23,46 @@ data class WorkDataResponse(
 )
 
 data class ItemDataResponse(
-    var user_id : Int,
+    var user_id : Long,
     var item_id : Int,
-    var item_loc : Int,
-    var is_attached : Int
+    var item_cnt : Int,		//유저가 가지고 있는 해당 item의 총 개수
+    var price : Int
 )
+
 
 data class MessageResponse(
     var message : String
+)
+
+data class ItemTable(
+    var user_id :Long,
+    var item_id :Int,
+    var item_cnt :Int
+)
+
+data class ItemLocationResponse(
+    var user_id : Long,
+    var loc_1 : Int,
+    var loc_2 : Int,
+    var loc_3 : Int,
+    var loc_4 : Int,
+    var loc_5 : Int,
+    var loc_6 : Int,
+    var loc_7 : Int,
+    var loc_8 : Int,
+    var loc_9 : Int,
+    var loc_10 : Int
+)
+
+data class locationTable(
+    var loc_1 :Int,
+    var loc_2 :Int,
+    var loc_3 :Int,
+    var loc_4 :Int,
+    var loc_5 :Int,
+    var loc_6 :Int,
+    var loc_7 :Int,
+    var loc_8 :Int,
+    var loc_9 :Int,
+    var loc_10 :Int
 )

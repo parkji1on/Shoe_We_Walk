@@ -8,6 +8,18 @@
     android:scaleType="centerCrop"
     tools:context=".ui.home.HomeFragment">
 
+    <ImageView
+        android:id="@+id/HomeMyJibbitsBox"
+        android:visibility="invisible"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/jibbits_none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HomeMyCollectionText" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HomeMyJibbitsItemRecyclerView"
         android:layout_width="330dp"
@@ -20,17 +32,6 @@
         app:layout_constraintTop_toTopOf="@+id/HomeMyJibbitsBox"
         app:layout_constraintVertical_bias="0.5" />
 
-    <ImageView
-        android:id="@+id/HomeMyJibbitsBox"
-        android:visibility="invisible"
-        android:layout_width="350dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/market_jibbitsnewbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HomeMyCollectionText" />
 
     <ImageView
         android:id="@+id/HomeProfileBoxImage"
@@ -79,85 +80,125 @@
         app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
         app:layout_constraintVertical_bias="0.5" />
 
-    <!--<ImageView
+    <ImageView
         android:id="@+id/MainJibbitzImage_4"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_4"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_4"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_5"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_5"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_5"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_6"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_6"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_6"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_7"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_7"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_7"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_8"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_8"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_8"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_9"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_9"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_9"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_10"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_10"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_10"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_1"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_1"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_1"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_2"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_2"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:src="@drawable/jibbits_bee_2"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/MainJibbitzImage_3"
         android:layout_width="256dp"
         android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_3"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />-->
+        android:src="@drawable/jibbits_bee_3"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <!-- 원본 코드
     ===jiwon

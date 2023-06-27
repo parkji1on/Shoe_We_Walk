@@ -2,12 +2,55 @@ package com.example.shoe_we_walk.Retrofit
 
 import com.example.shoe_we_walk.Data.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface RetrofitInterface {
+    @GET("/api/check/userExist")
+    fun isUserExist(
+        @Query("user_id") user_id: Long
+    ): Call<MessageResponse>
+
+    @POST("api/regist/user")
+    fun registUser(
+        @Body userRegisterRequest: UserRegisterRequest
+    ): Call<MessageResponse>
+
+    @PUT("api/updateUser")
+    fun updateUser(
+        @Body userRegisterRequest: UserRegisterRequest
+    ): Call<MessageResponse>
+
+    @GET("api/user/user_id")
+    fun getUser(
+        @Query("user_id") user_id: Long
+    ): Call<UserDataResponse>
+
+    @GET("api/getItemLoc")
+    fun getItemLoc(
+        @Query("item_id") item_id: Long
+    ): Call<ItemLocationResponse>
+
+    @PUT("api/updateItemLoc")
+    fun updateItemLoc(
+        @Body itemLocRegisterRequest: ItemLocRegisterRequest
+    ): Call<MessageResponse>
+
+    @GET("api/getAllItem")
+    fun getAllItem(
+        @Query("user_id") user_id: Long
+    ): Call<List<ItemDataResponse>>
+
+    @GET("api/update/item")
+    fun updateItem(
+        @Query("user_id") user_id: Long,
+        @Query("item_id") item_id: Int,
+        @Query("add") add: Int
+    ): Call<MessageResponse>
+
+
+
+
+
     @POST("api/insert/user")
     fun insertUser(
         @Body jsonparms : UserRegisterRequest
@@ -48,9 +91,8 @@ interface RetrofitInterface {
         @Query("user_id") user_id : Int, @Body jsonparms : UserRegisterRequest
     ) : Call<MessageResponse>
 
-    @POST("api/update/item")
+    /*@POST("api/update/item")
     fun updateItem(
         @Query("user_id") user_id : Int, @Body jsonparms : ItemRegisterRequest
-    ) : Call<MessageResponse>
-
+    ) : Call<MessageResponse>*/
 }

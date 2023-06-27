@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.shoe_we_walk.Data.Work
+import com.example.shoe_we_walk.Data.WorkRegisterRequest
+import com.example.shoe_we_walk.Retrofit.registWork
 import com.example.shoe_we_walk.databinding.DialogWorkfinishBinding
 
 class FinishWorkDialog(data:Work) : DialogFragment(){
@@ -24,6 +26,7 @@ class FinishWorkDialog(data:Work) : DialogFragment(){
         val (hour, min, sec) = getTime(data.work_time)
         val distance = data.work_dist
         val calroie = data.calories
+        val coin = getCoin(data.step_num)
 
         binding.timeTv.text = String.format("%02d:%02d:%02d", hour, min, sec)
         if (distance > 1000){
@@ -32,9 +35,11 @@ class FinishWorkDialog(data:Work) : DialogFragment(){
             binding.distanceTv.text = String.format("%.2f m", distance)
         }
         binding.calorieTv.text = "$calroie kcal"
-        binding.coinTv.text = 0.toString() + " coins"
+        binding.coinTv.text = "$coin coins"
 
         binding.updateBtn.setOnClickListener {
+//            운동정보 등록
+//            registWork(WorkRegisterRequest(user.user_id, "2023-06-27 16:36:00", data.step_num, distance, calroie))
 //            listener.onOKClicked()
             dismiss()
         }

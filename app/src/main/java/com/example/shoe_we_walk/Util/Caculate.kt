@@ -16,7 +16,7 @@ fun getDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double 
 }
 
 //칼로리 계산(kcal 단위)
-fun getCalorie(weight: Float, t: Int): Int{       //weight - kg, t - min
+fun getCalorie(weight: Double, t: Int): Int{       //weight - kg, t - min
 //    MET 계산법을 따름(https://lovefor-you.tistory.com/411)
 //    걷기 운동의 경 4MET를 적용
 //    MET*(3.5*kg*min) = air(ml)-> 4*3.5*weight*t, air(L)*5 = kcal ->air*5/1000   => weight*t*70/1000
@@ -32,6 +32,6 @@ fun getTime(time: Int): Array<Any> {
 }
 
 //운동으로 획든한 총 코인 계산
-fun getCoin(){
-
+fun getCoin(step: Int): Int{
+    return step/1000
 }

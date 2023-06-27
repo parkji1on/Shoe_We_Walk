@@ -35,8 +35,8 @@
         android:id="@+id/ProfileUserTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="27dp"
         android:layout_marginStart="15dp"
+        android:layout_marginBottom="27dp"
         android:text="로그인 하세요"
         android:textColor="@color/white"
         android:textSize="25sp"
@@ -48,34 +48,12 @@
         android:id="@+id/ProfileTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:text="사용자 프로필"
         android:textColor="@color/white"
         android:textSize="15sp"
-        android:layout_marginStart="15dp"
         app:layout_constraintBottom_toTopOf="@+id/ProfileUserTitleText"
         app:layout_constraintStart_toEndOf="@+id/ProfileUserImage" />
-
-    <ImageView
-        android:id="@+id/ProfileWeightBox"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/login_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileHightBox" />
-
-    <ImageView
-        android:id="@+id/ProfileHightBox"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/login_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileGenderBox" />
 
     <ImageView
         android:id="@+id/ProfileNameBox"
@@ -98,5 +76,71 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProfileNameBox" />
+
+    <ImageView
+        android:id="@+id/ProfileHightBox"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/login_textbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileGenderBox" />
+
+    <ImageView
+        android:id="@+id/ProfileWeightBox"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/login_textbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileHightBox" />
+
+    <TextView
+        android:id="@+id/chartTitle_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Activity Records"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/ProfileWeightBox"
+        app:layout_constraintTop_toBottomOf="@id/ProfileWeightBox" />
+
+    <TextView
+        android:id="@+id/chartDate_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="2023년 06월 26일 월요일"
+        android:textColor="#E2E2E2"
+        app:layout_constraintStart_toStartOf="@id/chartTitle_tv"
+        app:layout_constraintTop_toBottomOf="@id/chartTitle_tv" />
+
+    <ImageButton
+        android:id="@+id/periodSelect_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="center"
+        android:src="@drawable/period_choice_btn"
+        app:layout_constraintEnd_toEndOf="@id/ProfileWeightBox"
+        app:layout_constraintTop_toTopOf="@id/chartTitle_tv" />
+
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/work_bchart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chartDate_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,14 @@
 package com.example.shoe_we_walk.Data
 
 data class Info(
-    var user_id: Int,
+    var user_id: Long,
     var name : String,
-    var nickname : String,
     var gender : String,
     var age : Int,
     var height : Int,
-    var weight : Float
+    var weight : Double,
+    var total_item: Int,
+    var balance: Int
 )
 
 data class Work(

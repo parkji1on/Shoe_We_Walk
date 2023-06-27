@@ -45,14 +45,12 @@ class HomeFragment : Fragment() {
             val totalTime = result.data!!.getIntExtra("총 시간", 0)            //Int -> ms
             val totalDist = result.data!!.getDoubleExtra("총 거리", 0.0)       //Double -> m
             val totalStep = result.data!!.getIntExtra("총 걸음수", 0)           //Int -> 보
-            val data = Work(
+            val dlg = FinishWorkDialog(Work(
                 startTime,
                 totalTime,
                 totalStep,
                 totalDist.toFloat(),
-                getCalorie(user.weight, totalTime/60000)
-            )
-            val dlg = FinishWorkDialog(data)
+                getCalorie(user.weight, totalTime/60000)))
             dlg.isCancelable = false                //dialog외의 다른 곳을 눌러도 없어지지 않는다.
             dlg.show(parentFragmentManager, "Work Finished!")
 

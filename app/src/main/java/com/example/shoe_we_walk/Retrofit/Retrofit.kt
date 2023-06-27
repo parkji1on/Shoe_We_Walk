@@ -18,7 +18,6 @@ object RetrofitClient{
     val getRetrofitService: RetrofitInterface by lazy { retrofitClient.create(RetrofitInterface::class.java) }
 }
 
-
 fun okHttpClient(): OkHttpClient {
     val builder = OkHttpClient.Builder()    //객체 생성
     val logging = HttpLoggingInterceptor()  //client-okhttp-server 통신을 제어, 서로의 로그를 찍기 위한 interceptor

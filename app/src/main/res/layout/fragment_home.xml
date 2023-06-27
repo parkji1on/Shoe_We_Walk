@@ -188,12 +188,12 @@
         android:id="@+id/exercise_start_btn"
         android:layout_width="160dp"
         android:layout_height="48dp"
-        android:layout_marginTop="700dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/home_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
+        <!--app:layout_constraintTop_toBottomOf="@id/HomeMyJibbitsBox" />-->
 
     <TextView
         android:id="@+id/HomeMyShoesTitleText"

@@ -53,6 +53,7 @@ class JibbitsUnsetDialog (context : Context, val item : MyUsedJibbitsData){
 
             Toast.makeText(context, "지비츠 장식을 해제하였습니다.", Toast.LENGTH_SHORT).show()
             dialogListener?.onDialogOkClicked()
+            Auth.setchangeFlag()
             dialog.cancel()
         }
 

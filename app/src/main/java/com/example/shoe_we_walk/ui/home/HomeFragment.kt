@@ -78,6 +78,7 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), WalkActivity::class.java)
             launcher.launch(intent)
         }
+
         binding.HomeEditShoesText.setOnClickListener{
             if(loginflag == false)
                 Toast.makeText(context, "로그인하여 지비츠를 꾸며보세요!", Toast.LENGTH_SHORT).show()
@@ -100,8 +101,6 @@ class HomeFragment : Fragment() {
                 startActivity(intent)//신발 수정으로 이동
             }
         }
-
-
 
         binding.HomeUserTitleText.setOnClickListener{
             if(!loginflag)
@@ -126,14 +125,11 @@ class HomeFragment : Fragment() {
         //LiveData를 통한 데이터 변경을 감지후 프레그먼트 갱신
         Auth.loginFlag.observe(viewLifecycleOwner) { flag ->
             binding.HomeUserTitleText.text = nickname
-
             val imageView :ImageView = binding.root.findViewById(R.id.HomeProfileImage)
             Picasso.get()
                 .load(profileImage)
                 .transform(CircleTransformation())
                 .into(imageView)
-
-
             //지비츠 아이템 세팅
 
             when(Auth.locationdata.value?.location_1){
@@ -331,9 +327,65 @@ class HomeFragment : Fragment() {
             }
         }
 
-        Auth.locationdata.observe(viewLifecycleOwner) {locationData ->
+        //리사이클러뷰 변경사항 감지후 반영함.
+        Auth.total_item_cnt.observe(viewLifecycleOwner) {itemCnt ->
+
+            val recyclerView = binding.HomeMyJibbitsItemRecyclerView
+            val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            val box :ImageView = binding.HomeMyJibbitsBox
+
+            if(Auth.total_item_cnt.value != 0)
+                box.visibility = View.INVISIBLE
+
+            recyclerView.layoutManager = layoutManager
+
+            val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
+            recyclerView.addItemDecoration(JibbitsAdapter.ItemSpacingDecoration(spacing))
+
+            val myAllJibbitsAdapter = MyAllJibbitsAdapter(requireContext())
+            recyclerView.adapter = myAllJibbitsAdapter
 
 
+            for(item in itemList)
+            {
+                val itemCount = item.item_cnt
+
+                for(i in 0 until itemCount)//지비츠 정보 세팅
+                {
+                    if(item.item_id == 1)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_bee", "행복한꿀벌"))
+                    else if(item.item_id == 2)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_duck", "아기오리"))
+                    else if(item.item_id == 3)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_cat", "고양이"))
+                    else if(item.item_id == 4)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_clover", "네잎클로버"))
+                    else if(item.item_id == 5)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_flower", "보라색 꽃"))
+                    else if(item.item_id == 6)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_orange", "오렌지"))
+                    else if(item.item_id == 7)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_paeng", "펭귄"))
+                    else if(item.item_id == 8)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_bear", "분홍곰"))
+                    else if(item.item_id == 9)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_octopus", "문어"))
+                    else if(item.item_id == 10)
+                        myAllJibbitsAdapter.data.add(MyAllJibbitsData(item.item_id, "jibbits_strawberry", "딸기"))
+                }
+
+                myAllJibbitsAdapter.notifyDataSetChanged()
+            }
+
+
+
+
+
+
+
+        }
+
+        Auth.changeFlag.observe(viewLifecycleOwner) {
             when(Auth.locationdata.value?.location_1){
                 0 -> jibbits1.visibility = View.GONE
                 1 -> jibbits1.setImageResource(R.drawable.jibbits_bee_1)
@@ -475,10 +527,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        if(loginflag) {
-
-        }
-        else//로그인 X
+        if(!loginflag)
         {
             val jibbits1 :ImageView = binding.MainJibbitzImage1
             val jibbits2 :ImageView = binding.MainJibbitzImage2
@@ -491,19 +540,16 @@ class HomeFragment : Fragment() {
             val jibbits9 :ImageView = binding.MainJibbitzImage9
             val jibbits10 :ImageView = binding.MainJibbitzImage10
 
-            jibbits1.visibility = View.GONE
-            jibbits2.visibility = View.GONE
-            jibbits3.visibility = View.GONE
-            jibbits4.visibility = View.GONE
-            jibbits5.visibility = View.GONE
-            jibbits6.visibility = View.GONE
-            jibbits7.visibility = View.GONE
-            jibbits8.visibility = View.GONE
-            jibbits9.visibility = View.GONE
-            jibbits10.visibility = View.GONE
-
-            val box :ImageView = binding.HomeMyJibbitsBox
-            box.visibility = View.VISIBLE
+            jibbits1.visibility = View.INVISIBLE
+            jibbits2.visibility = View.INVISIBLE
+            jibbits3.visibility = View.INVISIBLE
+            jibbits4.visibility = View.INVISIBLE
+            jibbits5.visibility = View.INVISIBLE
+            jibbits6.visibility = View.INVISIBLE
+            jibbits7.visibility = View.INVISIBLE
+            jibbits8.visibility = View.INVISIBLE
+            jibbits9.visibility = View.INVISIBLE
+            jibbits10.visibility = View.INVISIBLE
         }
     }
 

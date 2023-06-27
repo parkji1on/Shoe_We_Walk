@@ -94,7 +94,12 @@ class RegisterActivity : AppCompatActivity() {
             override fun onResponse(call: Call<UserDataResponse>, response: Response<UserDataResponse>) {
                 if(response.isSuccessful()){
                     Auth.setUserName(response.body()!!.name)
-                    //TODO 다른 정보도 받아야함.
+                    Auth.setGender(response.body()!!.gender)
+                    Auth.setAge(response.body()!!.age)
+                    Auth.setHeight(response.body()!!.height)
+                    Auth.setWeight(response.body()!!.weight)
+                    Auth.setTotalItemCnt(response.body()!!.total_item)
+                    Auth.setCoin(response.body()!!.balance)
 
                     getItemLoc(Auth.user_id)
                 }
@@ -112,8 +117,8 @@ class RegisterActivity : AppCompatActivity() {
 
     //아이템 위치값 가져오기
     private fun getItemLoc(user_id : Long){
-        RetrofitClient.getRetrofitService.getItemLoc(user_id).enqueue(object : Callback<ItemLocationResponse> {
-            override fun onResponse(call: Call<ItemLocationResponse>,response: Response<ItemLocationResponse>) {
+        RetrofitClient.getRetrofitService.getItemLoc(user_id).enqueue(object : Callback<ItemLocDataResponse> {
+            override fun onResponse(call: Call<ItemLocDataResponse>,response: Response<ItemLocDataResponse>) {
                 if(response.isSuccessful()){
                     Auth.locationdata.value!!.location_1 = response.body()!!.loc_1
                     Auth.locationdata.value!!.location_2 = response.body()!!.loc_2
@@ -134,7 +139,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<ItemLocationResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ItemLocDataResponse>, t: Throwable) {
 
             }
         })

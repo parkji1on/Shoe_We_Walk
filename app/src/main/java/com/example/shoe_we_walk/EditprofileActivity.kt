@@ -39,8 +39,18 @@ class EditprofileActivity : AppCompatActivity() {
         val hightedittext :EditText = findViewById(R.id.EditProfileUserHightEditText)
         val weightedittext :EditText = findViewById(R.id.EditProfileUserWeightEditText)
 
+        nametext.hint = Auth.user_name.value
+        agetext.hint = Auth.age.value.toString()
+        hightedittext.hint = Auth.height.value.toString()
+        weightedittext.hint = Auth.weight.value.toString()
+
         var genderflag :Boolean
         genderflag = Auth.gender.value == "male" //male이면 true값
+        if(genderflag)
+            gendertext.text = "남성"
+        else
+            gendertext.text = "여성"
+
         gendertext.setOnClickListener {
             if(genderflag)
             {

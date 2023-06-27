@@ -18,6 +18,13 @@ object Auth {
 
 
 
+    private val _changeFlag: MutableLiveData<Boolean> = MutableLiveData()
+    val changeFlag: LiveData<Boolean> = _changeFlag
+
+    fun setchangeFlag(){
+        _changeFlag.value = changeFlag.value != true
+    }
+
 
 
     //    info

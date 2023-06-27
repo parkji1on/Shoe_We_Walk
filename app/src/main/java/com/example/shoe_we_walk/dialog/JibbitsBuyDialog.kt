@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.shoe_we_walk.Data.Auth
+import com.example.shoe_we_walk.Data.ItemTable
 import com.example.shoe_we_walk.Data.MessageResponse
 import com.example.shoe_we_walk.R
 import com.example.shoe_we_walk.Retrofit.RetrofitClient
@@ -95,6 +96,14 @@ class JibbitsBuyDialog(context : Context, val item :JibbitsData) {
                 if(response.isSuccessful()){
                     if(response.code() == 200) {
                         Toast.makeText(context, "구매완료", Toast.LENGTH_SHORT).show()
+                        Auth.setCoin(Auth.coin.value!! - item.price)
+                        Auth.setTotalItemCnt(Auth.total_item_cnt.value!! + 1)
+
+                        val searchitem = Auth.itemList.find{it.user_id == Auth.user_id && it.item_id == item.code}
+                        if(searchitem != null)
+                            searchitem.item_cnt++
+
+                        dialog.cancel()
                     }
                     else
                         Toast.makeText(context, errormessage, Toast.LENGTH_SHORT).show()

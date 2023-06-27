@@ -70,6 +70,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                 cnt++
 
             helperImage.setImageResource(imageResourceMap[cnt]!!)
+            num.text = cnt.toString()
         }
 
 
@@ -89,6 +90,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_1 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -103,6 +105,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_2 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -117,6 +120,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_3 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -131,6 +135,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_4 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -145,6 +150,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_5 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -159,6 +165,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_6 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -173,6 +180,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_7 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -187,6 +195,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_8 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -201,6 +210,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_9 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }
@@ -215,6 +225,7 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_10 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
+                    Auth.setchangeFlag()
                     dialog.cancel()
                 }
             }

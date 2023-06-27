@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.shoe_we_walk.Data.Auth
+import com.example.shoe_we_walk.Data.Auth.loginflag
 import com.example.shoe_we_walk.Data.Auth.nickname
 import com.example.shoe_we_walk.Data.Auth.profileImage
 import com.example.shoe_we_walk.EditprofileActivity
@@ -37,18 +39,24 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val titlename :TextView = binding.ProfileUserTitleText
-        titlename.text = nickname
-        val imageView : ImageView = binding.ProfileUserImage
-        Picasso.get()
-            .load(profileImage)
-            .transform(CircleTransformation())
-            .into(imageView)
+        val titlename: TextView = binding.ProfileUserTitleText
 
+        if (loginflag) {
+            titlename.text = nickname
+            val imageView: ImageView = binding.ProfileUserImage
+            Picasso.get()
+                .load(profileImage)
+                .transform(CircleTransformation())
+                .into(imageView)
+        }
         val editbtn :ImageView = binding.ProfileEditImage
         editbtn.setOnClickListener {
-            val intent = Intent(activity, EditprofileActivity::class.java)
-            startActivity(intent)
+            if(loginflag) {
+                val intent = Intent(activity, EditprofileActivity::class.java)
+                startActivity(intent)
+            }
+            else
+                Toast.makeText(context, "로그인을 해주세요.", Toast.LENGTH_SHORT).show()
         }
 
         val username :TextView = binding.ProfileUserNameText

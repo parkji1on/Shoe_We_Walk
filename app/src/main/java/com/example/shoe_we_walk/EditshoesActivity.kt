@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoe_we_walk.Data.Auth
 import com.example.shoe_we_walk.Data.Auth.nickname
+import com.example.shoe_we_walk.Data.Auth.setchangeFlag
 import com.example.shoe_we_walk.Data.ItemLocRegisterRequest
 import com.example.shoe_we_walk.Data.MessageResponse
 import com.example.shoe_we_walk.Retrofit.RetrofitClient
@@ -217,45 +218,45 @@ class EditshoesActivity : AppCompatActivity() {
         recyclerView2.adapter = myUsedJibbitsAdapter
 
         //Used 세팅
-        if(Auth.locationdata.value?.location_1 != 0)
-        {
+        if(Auth.locationdata.value?.location_1 != 0) //1번위치에 지비츠가 있으면
+        {   //위치에 저장되어있는 아이템 idx값이랑, 포지션 정보 저장
             addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 1)
         }
-        else if(Auth.locationdata.value?.location_2 != 0)
+        if(Auth.locationdata.value?.location_2 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 2)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_2, 2)
         }
-        else if(Auth.locationdata.value?.location_3 != 0)
+        if(Auth.locationdata.value?.location_3 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 3)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_3, 3)
         }
-        else if(Auth.locationdata.value?.location_4 != 0)
+        if(Auth.locationdata.value?.location_4 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 4)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_4, 4)
         }
-        else if(Auth.locationdata.value?.location_5 != 0)
+        if(Auth.locationdata.value?.location_5 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 5)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_5, 5)
         }
-        else if(Auth.locationdata.value?.location_6 != 0)
+        if(Auth.locationdata.value?.location_6 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 6)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_6, 6)
         }
-        else if(Auth.locationdata.value?.location_7 != 0)
+        if(Auth.locationdata.value?.location_7 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 7)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_7, 7)
         }
-        else if(Auth.locationdata.value?.location_8 != 0)
+        if(Auth.locationdata.value?.location_8 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 8)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_8, 8)
         }
-        else if(Auth.locationdata.value?.location_9 != 0)
+        if(Auth.locationdata.value?.location_9 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 9)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_9, 9)
         }
-        else if(Auth.locationdata.value?.location_10 != 0)
+        if(Auth.locationdata.value?.location_10 != 0)
         {
-            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_1, 10)
+            addUsed(myUsedJibbitsAdapter, Auth.locationdata.value!!.location_10, 10)
         }
 
         myUsedJibbitsAdapter.notifyDataSetChanged()
@@ -362,6 +363,7 @@ class EditshoesActivity : AppCompatActivity() {
                     if(response.code() == 200)
                     {
                         Toast.makeText(this@EditshoesActivity, "신발 정보가 업데이트 되었습니다.", Toast.LENGTH_SHORT).show()
+                        setchangeFlag()
                         finish()
                     }
                     else

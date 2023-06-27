@@ -29,7 +29,7 @@ class EditshoesActivity : AppCompatActivity() {
         binding = ActivityEditshoesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.EditShoesTitleText.text = nickname + "님의 신발"
+        binding.EditShoesTitleText.text = Auth.user_name.value + "님의 신발"
 
         //신발 세팅
 

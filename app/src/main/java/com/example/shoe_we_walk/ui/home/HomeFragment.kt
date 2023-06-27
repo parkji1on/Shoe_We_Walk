@@ -280,8 +280,8 @@ class HomeFragment : Fragment() {
 
                 recyclerView.layoutManager = layoutManager
 
-                val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
-                recyclerView.addItemDecoration(JibbitsAdapter.ItemSpacingDecoration(spacing))
+                //val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
+                recyclerView.addItemDecoration(JibbitsAdapter.ItemSpacingDecoration(8))
 
                 val myAllJibbitsAdapter = MyAllJibbitsAdapter(requireContext())
                 recyclerView.adapter = myAllJibbitsAdapter
@@ -329,8 +329,8 @@ class HomeFragment : Fragment() {
 
             recyclerView.layoutManager = layoutManager
 
-            val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
-            recyclerView.addItemDecoration(JibbitsAdapter.ItemSpacingDecoration(spacing))
+            //val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
+            recyclerView.addItemDecoration(JibbitsAdapter.ItemSpacingDecoration(8))
 
             val myAllJibbitsAdapter = MyAllJibbitsAdapter(requireContext())
             recyclerView.adapter = myAllJibbitsAdapter

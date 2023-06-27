@@ -299,9 +299,9 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/work_bchart"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:padding="15dp"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chartDate_tv" />

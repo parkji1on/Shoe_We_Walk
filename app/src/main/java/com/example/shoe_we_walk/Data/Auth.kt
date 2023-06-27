@@ -14,7 +14,7 @@ object Auth {
     val loginFlag: LiveData<Boolean> = _loginFlag
     private val _changeFlag: MutableLiveData<Boolean> = MutableLiveData()
     val changeFlag: LiveData<Boolean> = _changeFlag
-    private val _user_name: MutableLiveData<String> = MutableLiveData("")
+    private val _user_name: MutableLiveData<String> = MutableLiveData("홍길동")
     val user_name: LiveData<String> = _user_name
     private val _age: MutableLiveData<Int> = MutableLiveData(20)
     val age: LiveData<Int> = _age

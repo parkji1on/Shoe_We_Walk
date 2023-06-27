@@ -122,6 +122,9 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
             if(coords.size > 1){        //PolylineOverlay의 coords의 갯수가 2개 이상이 되지 않으면 오류가 발생한다.
                 polyline.coords = coords
                 if(polyline.map == null){       //PolylineOverlay를 맵에 표시
+                    polyline.width = 10
+                    polyline.capType = PolylineOverlay.LineCap.Round
+                    polyline.joinType = PolylineOverlay.LineJoin.Round
                     polyline.map = naverMap
                 }
 

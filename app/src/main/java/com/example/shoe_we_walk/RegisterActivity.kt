@@ -1,5 +1,6 @@
 package com.example.shoe_we_walk
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -73,7 +74,6 @@ class RegisterActivity : AppCompatActivity() {
                     if(response.code() == 200) {
                         Toast.makeText(this@RegisterActivity, "가입을 완료했습니다.", Toast.LENGTH_SHORT).show()
                         getUser(Auth.user_id)
-                        finish()
                     }
                 }
                 else
@@ -158,6 +158,11 @@ class RegisterActivity : AppCompatActivity() {
                             Auth.addItem(ItemTable(item.user_id, item.item_id, item.item_cnt))
                         }
                     }
+
+                    val intent = Intent(this@RegisterActivity, RegisterActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
                 }
                 else
                 {

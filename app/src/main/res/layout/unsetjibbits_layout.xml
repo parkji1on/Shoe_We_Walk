@@ -53,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/dialog_CancelButton" />
+        app:layout_constraintStart_toEndOf="@+id/Dialog_CancelButton" />
 
     <ImageView
         android:id="@+id/Dialog_MainShoesImage"

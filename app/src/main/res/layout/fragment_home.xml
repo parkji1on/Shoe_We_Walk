@@ -8,30 +8,6 @@
     android:scaleType="centerCrop"
     tools:context=".ui.home.HomeFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/HomeMyJibbitsItemRecyclerView"
-        android:layout_width="330dp"
-        android:layout_height="110dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/HomeMyJibbitsBox"
-        app:layout_constraintEnd_toEndOf="@+id/HomeMyJibbitsBox"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/HomeMyJibbitsBox"
-        app:layout_constraintTop_toTopOf="@+id/HomeMyJibbitsBox"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <ImageView
-        android:id="@+id/HomeMyJibbitsBox"
-        android:visibility="invisible"
-        android:layout_width="350dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/market_jibbitsnewbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HomeMyCollectionText" />
-
     <ImageView
         android:id="@+id/HomeProfileBoxImage"
         android:layout_width="350dp"
@@ -56,144 +32,29 @@
         app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/home_profile_image" />
 
-    <ImageView
-        android:id="@+id/HomeShoesBoxImage"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/home_shoesbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HomeMyShoesTitleText" />
-
-    <ImageView
-        android:id="@+id/HomeShoesImage"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/shoes_basic"
-        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
-        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
-        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <!--<ImageView
-        android:id="@+id/MainJibbitzImage_4"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_4"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_5"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_5"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_6"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_6"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_7"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_7"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_8"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_8"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_9"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_9"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_10"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_10"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_1"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_1"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_2"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_2"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ImageView
-        android:id="@+id/MainJibbitzImage_3"
-        android:layout_width="256dp"
-        android:layout_height="187dp"
-        android:src="@drawable/jibbitz_bee_3"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="255dp" />-->
-
-    <!-- 원본 코드
-    ===jiwon
-    <Button
-        android:id="@+id/exercise_start_btn"
-        android:layout_width="300dp"
+    <TextView
+        android:id="@+id/HomeUserTitleText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="운동 시작"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="27dp"
+        android:text="로그인 하세요"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeProfileBoxImage"
+        app:layout_constraintStart_toEndOf="@+id/HomeProfileImage" />
 
-    ===joonbo
-    <ImageView
-        android:id="@+id/HomeStartBtn"
-        android:layout_width="160dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="700dp"
-        android:src="@drawable/home_start"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-        -->
-
-    <ImageView
-        android:id="@+id/exercise_start_btn"
-        android:layout_width="160dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/home_start"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"/>
-        <!--app:layout_constraintTop_toBottomOf="@id/HomeMyJibbitsBox" />-->
+    <TextView
+        android:id="@+id/HomeTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="오늘도 활기차게 달려볼까요?"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/HomeUserTitleText"
+        app:layout_constraintStart_toEndOf="@+id/HomeProfileImage" />
 
     <TextView
         android:id="@+id/HomeMyShoesTitleText"
@@ -222,29 +83,148 @@
         app:layout_constraintBottom_toTopOf="@+id/HomeShoesBoxImage"
         app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage" />
 
-    <TextView
-        android:id="@+id/HomeUserTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="27dp"
-        android:text="로그인 하세요"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/HomeProfileBoxImage"
-        app:layout_constraintStart_toEndOf="@+id/HomeProfileImage" />
+    <ImageView
+        android:id="@+id/MainJibbitzImage_2"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_2"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/HomeTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="오늘도 활기차게 달려볼까요?"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/HomeUserTitleText"
-        app:layout_constraintStart_toEndOf="@+id/HomeProfileImage" />
+    <ImageView
+        android:id="@+id/MainJibbitzImage_3"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_3"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/HomeShoesBoxImage"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/home_shoesbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HomeMyShoesTitleText" />
+
+    <ImageView
+        android:id="@+id/HomeShoesImage"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/shoes_basic"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/MainJibbitzImage_4"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_4"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/MainJibbitzImage_5"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_5"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/MainJibbitzImage_6"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_6"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/MainJibbitzImage_7"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_7"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/MainJibbitzImage_8"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_8"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/MainJibbitzImage_9"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_9"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/MainJibbitzImage_10"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_10"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/MainJibbitzImage_1"
+        android:layout_width="256dp"
+        android:layout_height="187dp"
+        android:src="@drawable/jibbits_bee_1"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/HomeShoesBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/HomeMyCollectionText"
@@ -258,5 +238,39 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HomeShoesBoxImage" />
+
+    <ImageView
+        android:id="@+id/HomeMyJibbitsBox"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/jibbits_none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HomeMyCollectionText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/HomeMyJibbitsItemRecyclerView"
+        android:layout_width="330dp"
+        android:layout_height="110dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/HomeMyJibbitsBox"
+        app:layout_constraintEnd_toEndOf="@+id/HomeMyJibbitsBox"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/HomeMyJibbitsBox"
+        app:layout_constraintTop_toTopOf="@+id/HomeMyJibbitsBox"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/exercise_start_btn"
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/home_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/HomeMyJibbitsBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

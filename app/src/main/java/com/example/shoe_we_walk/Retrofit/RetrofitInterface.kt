@@ -2,10 +2,7 @@ package com.example.shoe_we_walk.Retrofit
 
 import com.example.shoe_we_walk.Data.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface RetrofitInterface {
     /*@POST("api/insert/user")
@@ -48,7 +45,27 @@ interface RetrofitInterface {
         @Query("user_id") user_id : Int, @Body jsonparms : WorkRegisterRequest
     ) : Call<MessageResponse>
 
-    @POST("api/update/item")
+    @GET("api/get/itemloc")
+    fun getItemLoc(
+        @Query("user_id") user_id : Long
+    ) : Call<ItemLocDataResponse>
+
+    @POST("api/update/itemloc")
+    fun updateItemLoc(
+        @Body jsonparams : ItemLocRegisterRequest
+    ) : Call<MessageResponse>
+
+    @GET("api/get/item")
+    fun getItem(
+        @Query("user_id") user_id : Long, @Query("item_id") item_id : Int
+    ) : Call<ItemDataResponse>
+
+    @GET("api/getAll/item")
+    fun getAllItem(
+        @Query("user_id") user_id : Long
+    ) : Call<List<ItemDataResponse>>
+
+    @GET("api/update/item")
     fun updateItem(
         @Query("user_id") user_id : Int, @Body jsonparms : ItemRegisterRequest
     ) : Call<MessageResponse>*/

@@ -1,14 +1,11 @@
 package com.example.shoe_we_walk.Util
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.shoe_we_walk.Data.Work
-import com.example.shoe_we_walk.Data.WorkRegisterRequest
-import com.example.shoe_we_walk.Retrofit.registWork
 import com.example.shoe_we_walk.databinding.DialogWorkfinishBinding
 
 class FinishWorkDialog(data:Work) : DialogFragment(){
@@ -21,7 +18,7 @@ class FinishWorkDialog(data:Work) : DialogFragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DialogWorkfinishBinding.inflate(inflater, container, false)
         val (hour, min, sec) = getTime(data.work_time)
         val distance = data.work_dist

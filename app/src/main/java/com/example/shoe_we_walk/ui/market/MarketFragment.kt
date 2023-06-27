@@ -6,15 +6,18 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shoe_we_walk.Data.Auth
 import com.example.shoe_we_walk.R
 import com.example.shoe_we_walk.adapter.JibbitsAdapter
 import com.example.shoe_we_walk.adapter.JibbitsData
 import com.example.shoe_we_walk.databinding.FragmentMarketBinding
+import java.text.NumberFormat
 
 class MarketFragment : Fragment() {
 
@@ -22,8 +25,8 @@ class MarketFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    lateinit var jibbitsAdapter :JibbitsAdapter
-    lateinit var jibbitsAllAdapter: JibbitsAdapter
+    private lateinit var jibbitsAdapter :JibbitsAdapter
+    private lateinit var jibbitsAllAdapter: JibbitsAdapter
     val data = mutableListOf<JibbitsData>()
 
     private lateinit var recyclerView: RecyclerView
@@ -61,6 +64,19 @@ class MarketFragment : Fragment() {
         jibbitsAdapter = JibbitsAdapter(requireContext())
         recyclerView.adapter = jibbitsAdapter
 
+        val cointext :TextView = binding.MarketMycoinValue
+        val totalitemcnttext :TextView = binding.matketMycollectionValue
+
+        Auth.coin.observe(viewLifecycleOwner) { coinValue ->
+            val formattedNumber = NumberFormat.getInstance().format(coinValue)
+            cointext.text = "$formattedNumber 코인"
+        }
+
+        Auth.total_item_cnt.observe(viewLifecycleOwner) { itemCount ->
+            val formattedNumber2 = NumberFormat.getInstance().format(itemCount)
+            totalitemcnttext.text = "$formattedNumber2 개"
+        }
+
         //Add Data
         jibbitsAdapter.data.add(JibbitsData(1, "jibbits_bee", "행복한꿀벌", 250))
         jibbitsAdapter.data.add(JibbitsData(2, "jibbits_duck", "아기오리", 400))
@@ -74,7 +90,7 @@ class MarketFragment : Fragment() {
         jibbitsAdapter.data.add(JibbitsData(10, "jibbits_strawberry", "딸기", 120))
 
 
-        jibbitsAdapter.data. addAll(data)
+        jibbitsAdapter.data.addAll(data)
         jibbitsAdapter.notifyDataSetChanged()
 
         val recyclerView2 = binding.MarketAllItemRecyclerView
@@ -106,7 +122,6 @@ class MarketFragment : Fragment() {
         jibbitsAllAdapter.data.add(JibbitsData(9, "jibbits_octopus", "문어", 150))
         jibbitsAllAdapter.data.add(JibbitsData(10, "jibbits_strawberry", "딸기", 120))
 
-        jibbitsAllAdapter.data. addAll(data)
         jibbitsAllAdapter.notifyDataSetChanged()
     }
 

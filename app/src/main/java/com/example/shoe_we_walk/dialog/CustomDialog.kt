@@ -82,7 +82,6 @@ class FinishWorkDialog(private val context: AppCompatActivity){
         binding.coinTv.text = 0.toString() + " coins"
         //ok 버튼 동작
         binding.updateBtn.setOnClickListener {
-            //TODO: 부모 액티비티로 내용을 돌려주기 위해 작성할 코드
             insertWork(user.user_id, WorkRegisterRequest(current, step, distance.toFloat(), calroie))
             dlg.dismiss()
         }

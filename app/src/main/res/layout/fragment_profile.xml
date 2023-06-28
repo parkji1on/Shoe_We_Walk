@@ -1,309 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/SWW_Theme_Color"
+    android:layout_height="wrap_content"
     tools:context=".ui.profile.ProfileFragment">
 
-    <ImageView
-        android:id="@+id/ProfileUserBox"
-        android:layout_width="350dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/home_profilebox"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/SWW_Theme_Color">
 
-    <ImageView
-        android:id="@+id/ProfileUserImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="15dp"
-        android:alpha="0.8"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileUserBox"
-        app:layout_constraintStart_toStartOf="@+id/ProfileUserBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileUserBox"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/home_profile_image" />
+        <ImageView
+            android:id="@+id/ProfileUserBox"
+            android:layout_width="350dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/home_profilebox"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/ProfileTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="사용자 프로필"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/ProfileUserTitleText"
-        app:layout_constraintStart_toEndOf="@+id/ProfileUserImage" />
+        <ImageView
+            android:id="@+id/ProfileUserImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:alpha="0.8"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileUserBox"
+            app:layout_constraintStart_toStartOf="@+id/ProfileUserBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileUserBox"
+            app:layout_constraintVertical_bias="0.5"
+            app:srcCompat="@drawable/home_profile_image" />
 
-    <TextView
-        android:id="@+id/ProfileUserTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="27dp"
-        android:text="로그인 하세요"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileUserBox"
-        app:layout_constraintStart_toEndOf="@+id/ProfileUserImage" />
+        <TextView
+            android:id="@+id/ProfileTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="사용자 프로필"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/ProfileUserTitleText"
+            app:layout_constraintStart_toEndOf="@+id/ProfileUserImage" />
 
-    <ImageView
-        android:id="@+id/ProfileHightBox"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/login_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileAgeBox" />
+        <TextView
+            android:id="@+id/ProfileUserTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="27dp"
+            android:text="로그인 하세요"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileUserBox"
+            app:layout_constraintStart_toEndOf="@+id/ProfileUserImage" />
 
-    <ImageView
-        android:id="@+id/ProfileWeightBox"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/login_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileHightBox" />
+        <ImageView
+            android:id="@+id/ProfileHightBox"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/login_textbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileAgeBox" />
 
-    <TextView
-        android:id="@+id/ProfileUserHightText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="180cm"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileHightBox"
-        app:layout_constraintEnd_toEndOf="@+id/ProfileHightBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileHightBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <ImageView
+            android:id="@+id/ProfileWeightBox"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/login_textbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileHightBox" />
 
-    <TextView
-        android:id="@+id/ProfileUserWeightText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="80kg"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileWeightBox"
-        app:layout_constraintEnd_toEndOf="@+id/ProfileWeightBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileWeightBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/ProfileUserHightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="180cm"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileHightBox"
+            app:layout_constraintEnd_toEndOf="@+id/ProfileHightBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileHightBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <ImageView
-        android:id="@+id/ProfileEditImage"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/editbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileWeightBox" />
+        <TextView
+            android:id="@+id/ProfileUserWeightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="80kg"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileWeightBox"
+            app:layout_constraintEnd_toEndOf="@+id/ProfileWeightBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileWeightBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <ImageView
-        android:id="@+id/ProfileNameBox"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="0dp"
-        android:src="@drawable/login_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileUserBox" />
+        <ImageView
+            android:id="@+id/ProfileEditImage"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/editbtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileWeightBox" />
 
-    <ImageView
-        android:id="@+id/ProfileGenderBox"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/login_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileNameBox" />
+        <ImageView
+            android:id="@+id/ProfileNameBox"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/login_textbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileUserBox" />
 
-    <ImageView
-        android:id="@+id/ProfileAgeBox"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/login_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileGenderBox" />
+        <ImageView
+            android:id="@+id/ProfileGenderBox"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/login_textbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileNameBox" />
 
-    <TextView
-        android:id="@+id/ProfileUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:alpha="0.7"
-        android:text="이름"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileNameBox"
-        app:layout_constraintStart_toStartOf="@+id/ProfileNameBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileNameBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <ImageView
+            android:id="@+id/ProfileAgeBox"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/login_textbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileGenderBox" />
 
-    <TextView
-        android:id="@+id/ProfileUserNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="홍길동"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileNameBox"
-        app:layout_constraintEnd_toEndOf="@+id/ProfileNameBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileNameBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/ProfileUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:alpha="0.7"
+            android:text="이름"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileNameBox"
+            app:layout_constraintStart_toStartOf="@+id/ProfileNameBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileNameBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/ProfileUserGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:alpha="0.7"
-        android:text="성별"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileGenderBox"
-        app:layout_constraintStart_toStartOf="@+id/ProfileGenderBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileGenderBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/ProfileUserNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="홍길동"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileNameBox"
+            app:layout_constraintEnd_toEndOf="@+id/ProfileNameBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileNameBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/ProfileUserAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:alpha="0.7"
-        android:text="나이"
-        app:layout_goneMarginStart="20dp"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileAgeBox"
-        app:layout_constraintStart_toStartOf="@+id/ProfileAgeBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileAgeBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/ProfileUserGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:alpha="0.7"
+            android:text="성별"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileGenderBox"
+            app:layout_constraintStart_toStartOf="@+id/ProfileGenderBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileGenderBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/ProfileUserAgeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="20세"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileAgeBox"
-        app:layout_constraintEnd_toEndOf="@+id/ProfileAgeBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileAgeBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/ProfileUserAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:alpha="0.7"
+            android:text="나이"
+            app:layout_goneMarginStart="20dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileAgeBox"
+            app:layout_constraintStart_toStartOf="@+id/ProfileAgeBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileAgeBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/ProfileUserGenderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="남성"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileGenderBox"
-        app:layout_constraintEnd_toEndOf="@+id/ProfileGenderBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileGenderBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/ProfileUserAgeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="20세"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileAgeBox"
+            app:layout_constraintEnd_toEndOf="@+id/ProfileAgeBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileAgeBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/ProfileUserHight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:alpha="0.7"
-        android:text="키"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileHightBox"
-        app:layout_constraintStart_toStartOf="@+id/ProfileHightBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileHightBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/ProfileUserGenderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="남성"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileGenderBox"
+            app:layout_constraintEnd_toEndOf="@+id/ProfileGenderBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileGenderBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/ProfileUserWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:alpha="0.7"
-        android:text="몸무게"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileWeightBox"
-        app:layout_constraintStart_toStartOf="@+id/ProfileWeightBox"
-        app:layout_constraintTop_toTopOf="@+id/ProfileWeightBox"
-        app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/ProfileUserHight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:alpha="0.7"
+            android:text="키"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileHightBox"
+            app:layout_constraintStart_toStartOf="@+id/ProfileHightBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileHightBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/chartTitle_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:text="Activity Records"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/ProfileWeightBox"
-        app:layout_constraintTop_toBottomOf="@id/ProfileEditImage" />
+        <TextView
+            android:id="@+id/ProfileUserWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:alpha="0.7"
+            android:text="몸무게"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ProfileWeightBox"
+            app:layout_constraintStart_toStartOf="@+id/ProfileWeightBox"
+            app:layout_constraintTop_toTopOf="@+id/ProfileWeightBox"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/chartDate_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:text="2023년 06월 26일 월요일"
-        android:textColor="#E2E2E2"
-        app:layout_constraintStart_toStartOf="@id/chartTitle_tv"
-        app:layout_constraintTop_toBottomOf="@id/chartTitle_tv" />
+        <TextView
+            android:id="@+id/chartTitle_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:text="Activity Records"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/ProfileWeightBox"
+            app:layout_constraintTop_toBottomOf="@id/ProfileEditImage" />
 
-    <ImageButton
-        android:id="@+id/periodSelect_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="center"
-        android:src="@drawable/period_choice_btn"
-        app:layout_constraintEnd_toEndOf="@id/ProfileWeightBox"
-        app:layout_constraintTop_toTopOf="@id/chartTitle_tv" />
+        <TextView
+            android:id="@+id/chartDate_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="2023년 06월 26일 월요일"
+            android:textColor="#E2E2E2"
+            app:layout_constraintStart_toStartOf="@id/chartTitle_tv"
+            app:layout_constraintTop_toBottomOf="@id/chartTitle_tv" />
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/work_bchart"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chartDate_tv" />
+        <ImageButton
+            android:id="@+id/periodSelect_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="center"
+            android:src="@drawable/period_choice_btn"
+            app:layout_constraintEnd_toEndOf="@id/ProfileWeightBox"
+            app:layout_constraintTop_toTopOf="@id/chartTitle_tv" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/work_bchart"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chartDate_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -6,4 +6,10 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+    <style name="RadioDialog" parent ="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@color/SWW_Theme_Color</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

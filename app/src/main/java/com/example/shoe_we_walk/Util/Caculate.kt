@@ -9,8 +9,7 @@ const val R = 6372.8 * 1000
 fun getDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
     val dLat = toRadians(lat2 - lat1)
     val dLon = toRadians(lon2 - lon1)
-    val a = kotlin.math.sin(dLat / 2).pow(2.0)
-        + kotlin.math.sin(dLon / 2).pow(2.0) * kotlin.math.cos(toRadians(lat1)) * kotlin.math.cos(toRadians(lat2))
+    val a = kotlin.math.sin(dLat / 2).pow(2.0)+ kotlin.math.sin(dLon / 2).pow(2.0) * kotlin.math.cos(toRadians(lat1)) * kotlin.math.cos(toRadians(lat2))
     val c = 2 * kotlin.math.asin(kotlin.math.sqrt(a))
     return R * c              //return - m
 }

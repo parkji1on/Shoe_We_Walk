@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.shoe_we_walk.Data.Auth
 import com.example.shoe_we_walk.Data.Work
 import com.example.shoe_we_walk.databinding.DialogWorkfinishBinding
 
 class FinishWorkDialog(data:Work) : DialogFragment(){
 
-    lateinit var binding: DialogWorkfinishBinding
+    private lateinit var binding: DialogWorkfinishBinding
     private val data = data
 //    lateinit var listener: DialogOKClickedListener
 
@@ -22,7 +24,7 @@ class FinishWorkDialog(data:Work) : DialogFragment(){
         binding = DialogWorkfinishBinding.inflate(inflater, container, false)
         val (hour, min, sec) = getTime(data.work_time)
         val distance = data.work_dist
-        val calroie = data.calories
+        val calorie = data.calories
         val coin = getCoin(data.step_num)
 
         binding.timeTv.text = String.format("%02d:%02d:%02d", hour, min, sec)
@@ -31,12 +33,18 @@ class FinishWorkDialog(data:Work) : DialogFragment(){
         } else{
             binding.distanceTv.text = String.format("%.2f m", distance)
         }
-        binding.calorieTv.text = "$calroie kcal"
+        binding.calorieTv.text = "$calorie kcal"
         binding.coinTv.text = "$coin coins"
 
         binding.updateBtn.setOnClickListener {
 //            운동정보 등록
-//            registWork(WorkRegisterRequest(user.user_id, "2023-06-27 16:36:00", data.step_num, distance, calroie))
+            if(Auth.loginflag){
+//                registWork(WorkRegisterRequest(Auth.user_id, data.work_date, data.step_num, distance, calorie))
+                Toast.makeText(requireContext(), "${data.step_num}을 걸어서 ${coin}을 얻었습니다!", Toast.LENGTH_SHORT).show()
+                Auth.setCoin((Auth.coin.value!! +coin))
+            } else {
+                Toast.makeText(requireContext(), "로그인을 해주시기 바랍니다!", Toast.LENGTH_SHORT).show()
+            }
 //            listener.onOKClicked()
             dismiss()
         }

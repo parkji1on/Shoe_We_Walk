@@ -220,9 +220,8 @@ fun getWork(user_id : Long, work_date1 : String, work_date2 : String){
 fun getWeekWork(user_id : Long, completion: (WeekStepNum, String)->Unit){
     getRetrofitService.getWeekWork(user_id).enqueue(object : Callback<WeekStepNum> {
         override fun onResponse(call: Call<WeekStepNum>,response: Response<WeekStepNum>) {
-            if(response.isSuccessful()){
+            if(response.isSuccessful){
                 Log.d("Response:", response.body().toString())
-                Log.d("Response:", response.toString())
                 completion(response.body() as WeekStepNum, response.body().toString())
             }
             else
@@ -240,39 +239,48 @@ fun getWeekWork(user_id : Long, completion: (WeekStepNum, String)->Unit){
 }
 
 //현재 날짜에 해당하는 month의 week별 걸음수 가져오기
-fun getMonthWork(user_id : Long){
+fun getMonthWork(user_id : Long, completion: (MonthStepNum, String) -> Unit){
     getRetrofitService.getMonthWork(user_id).enqueue(object : Callback<MonthStepNum> {
         override fun onResponse(call: Call<MonthStepNum>,response: Response<MonthStepNum>) {
-            if(response.isSuccessful()){
+            if(response.isSuccessful){
                 Log.d("Response:", response.body().toString())
+                completion(response.body() as MonthStepNum, response.body().toString())
+
             }
             else
             {
                 Log.d("Response FAILURE", response.errorBody()!!.string())
+                completion(MonthStepNum(0,0,0,0,0), response.errorBody().toString())
+
             }
         }
 
         override fun onFailure(call: Call<MonthStepNum>, t: Throwable) {
             Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
+            completion(MonthStepNum(0,0,0,0,0), t.toString())
         }
     })
 }
 
 //현재 날짜에 해당하는 year의 month별 걸음수 가져오기
-fun getYearWork(user_id : Long){
+fun getYearWork(user_id : Long, completion: (YearStepNum, String) -> Unit){
     getRetrofitService.getYearWork(user_id).enqueue(object : Callback<YearStepNum> {
         override fun onResponse(call: Call<YearStepNum>,response: Response<YearStepNum>) {
-            if(response.isSuccessful()){
+            if(response.isSuccessful){
                 Log.d("Response:", response.body().toString())
+                completion(response.body() as YearStepNum, response.body().toString())
+
             }
             else
             {
                 Log.d("Response FAILURE", response.errorBody()!!.string())
+                completion(YearStepNum(0,0,0,0,0, 0, 0, 0, 0, 0, 0, 0), response.errorBody().toString())
             }
         }
 
         override fun onFailure(call: Call<YearStepNum>, t: Throwable) {
             Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
+            completion(YearStepNum(0,0,0,0,0, 0, 0, 0, 0, 0, 0, 0), t.toString())
         }
     })
 }

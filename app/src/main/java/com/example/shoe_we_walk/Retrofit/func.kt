@@ -178,25 +178,6 @@ fun updateItem(user_id : Long, item_id : Int, add : Int){
     })
 }
 
-//work 정보 등록하기
-fun registWork(workRegisterRequest : WorkRegisterRequest){
-    getRetrofitService.registWork(workRegisterRequest).enqueue(object : Callback<MessageResponse> {
-        override fun onResponse(call: Call<MessageResponse>,response: Response<MessageResponse>) {
-            if(response.isSuccessful()){
-                Log.d("Response:", response.body().toString())
-            }
-            else
-            {
-                Log.d("Response FAILURE", response.errorBody()!!.string())
-            }
-        }
-
-        override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
-            Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
-        }
-    })
-}
-
 //work 정보 가져오기
 fun getWork(user_id : Long, work_date1 : String, work_date2 : String){
     getRetrofitService.getWork(user_id, work_date1, work_date2).enqueue(object : Callback<List<WorkDataResponse>> {

@@ -6,8 +6,14 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.shoe_we_walk.Data.Auth
+import com.example.shoe_we_walk.Data.ItemLocRegisterRequest
+import com.example.shoe_we_walk.Data.MessageResponse
 import com.example.shoe_we_walk.R
+import com.example.shoe_we_walk.Retrofit.RetrofitClient
 import com.example.shoe_we_walk.adapter.MyUsedJibbitsData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class JibbitsUnsetDialog (context : Context, val item : MyUsedJibbitsData){
     private val dialog = Dialog(context, R.style.CustomDialog)
@@ -53,7 +59,14 @@ class JibbitsUnsetDialog (context : Context, val item : MyUsedJibbitsData){
 
             Toast.makeText(context, "지비츠 장식을 해제하였습니다.", Toast.LENGTH_SHORT).show()
             dialogListener?.onDialogOkClicked()
-            Auth.setchangeFlag()
+            updateItemLoc(
+                ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                    Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                    Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                    Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                    Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                    Auth.locationdata.value!!.location_10)
+            )
             dialog.cancel()
         }
 
@@ -71,5 +84,21 @@ class JibbitsUnsetDialog (context : Context, val item : MyUsedJibbitsData){
             9 -> helperImage.setImageResource(R.drawable.jibbits_guide_9)
             10 -> helperImage.setImageResource(R.drawable.jibbits_guide_10)
         }
+    }
+
+    private fun updateItemLoc(itemLocRegisterRequest : ItemLocRegisterRequest){
+        RetrofitClient.getRetrofitService.updateItemLoc(itemLocRegisterRequest).enqueue(object :
+            Callback<MessageResponse> {
+            override fun onResponse(call: Call<MessageResponse>, response: Response<MessageResponse>) {
+                if(response.isSuccessful){
+                    if(response.code() == 200)
+                    {
+                        Auth.setchangeFlag()
+                    }
+                }
+            }
+            override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+            }
+        })
     }
 }

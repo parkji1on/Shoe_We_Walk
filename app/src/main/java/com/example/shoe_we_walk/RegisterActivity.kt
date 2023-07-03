@@ -148,9 +148,6 @@ class RegisterActivity : AppCompatActivity() {
                         }
                     }
 
-                    val intent = Intent(this@RegisterActivity, RegisterActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
                     finish()
                 }
             }

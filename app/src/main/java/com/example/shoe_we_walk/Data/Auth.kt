@@ -31,7 +31,7 @@ object Auth {
     //    item info
     var itemList :MutableList<ItemTable> = mutableListOf()
     //    Position info
-    private val locationData: MutableLiveData<LocationData> = MutableLiveData<LocationData>().apply {
+    val locationData: MutableLiveData<LocationData> = MutableLiveData<LocationData>().apply {
         value = LocationData()
     }
     val locationdata :LiveData<LocationData> = locationData

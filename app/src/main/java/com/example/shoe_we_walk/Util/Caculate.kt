@@ -30,6 +30,13 @@ fun getTime(time: Int): Array<Any> {
     return arrayOf(hour, minute%60, second%60)
 }
 
+fun getTime2(time: Int): Triple<Int, Int, Int> {
+    val second = time / 1000
+    val minute = second / 60
+    val hour = minute / 60
+    return Triple(hour, minute % 60, second % 60)
+}
+
 //운동으로 획든한 총 코인 계산
 fun getCoin(step: Int): Int{
     return step/1000

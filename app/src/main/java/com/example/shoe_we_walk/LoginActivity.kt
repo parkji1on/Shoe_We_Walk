@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     isUserExist(user_id)
                 }
             }
-            nextMainActivity()
+            //nextMainActivity()
         }
     }
 
@@ -71,7 +71,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             isUserExist(user_id)
                         }
                     }
-                    nextMainActivity()
                 }
             }
         }
@@ -108,7 +107,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                                 }
                             }
 
-                            nextMainActivity()
+                            //nextMainActivity()
                         }
                     }
                 } else {
@@ -116,12 +115,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
-    }
-
-    private fun nextMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        finish()
     }
 
     //유저가 등록되어있는지 확인
@@ -133,7 +126,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     200 -> { //user_id 값이 DB에 저장되어 있지 않을 때
                         setLoginFlag(true)
                         Toast.makeText(this@LoginActivity, "추가정보를 입력하여 가입을 완료해주세요.", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+
+                        val intent = Intent(this@LoginActivity, RegisterActivity::class.java) //Register 화면으로 이동
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                         finish()
@@ -190,6 +184,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     Auth.locationdata.value!!.location_8 = response.body()!!.loc_8
                     Auth.locationdata.value!!.location_9 = response.body()!!.loc_9
                     Auth.locationdata.value!!.location_10 = response.body()!!.loc_10
+
                     getAllItem(Auth.user_id)
                 }
             }
@@ -213,8 +208,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             Auth.addItem(ItemTable(item.user_id, item.item_id, item.item_cnt))
                         }
                     }
-
                     setLoginFlag(true)
+                    finish()
                 }
             }
 

@@ -1,171 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/SWW_Theme_Color"
     tools:context=".ui.market.MarketFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/SWW_Theme_Color">
+    <TextView
+        android:id="@+id/MarketJibbitsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="364dp"
+        android:text="모든 상품"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/MarketJibbitsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="364dp"
-            android:text="모든 상품"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/marketNewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="154dp"
+        android:text="신상품"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/marketNewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="154dp"
-            android:text="신상품"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/MarketMycollectionBox"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/market_mycollectionbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/MarketMycollectionBox"
-            android:layout_width="170dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/market_mycollectionbox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/matketMycollectionValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="0 개"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/MarketMycollectionBox"
+        app:layout_constraintEnd_toEndOf="@+id/MarketMycollectionBox"
+        app:layout_constraintTop_toTopOf="@+id/MarketMycollectionBox"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView
-            android:id="@+id/matketMycollectionValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="0 개"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/MarketMycollectionBox"
-            app:layout_constraintEnd_toEndOf="@+id/MarketMycollectionBox"
-            app:layout_constraintTop_toTopOf="@+id/MarketMycollectionBox"
-            app:layout_constraintVertical_bias="0.5" />
+    <ImageView
+        android:id="@+id/MarketMycoinBox"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/market_mycollectionbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/MarketMycoinBox"
-            android:layout_width="170dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/market_mycollectionbox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/MarketMycoinValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="1,000,000 코인"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/MarketMycoinBox"
+        app:layout_constraintEnd_toEndOf="@+id/MarketMycoinBox"
+        app:layout_constraintTop_toTopOf="@+id/MarketMycoinBox"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView
-            android:id="@+id/MarketMycoinValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="1,000,000 코인"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/MarketMycoinBox"
-            app:layout_constraintEnd_toEndOf="@+id/MarketMycoinBox"
-            app:layout_constraintTop_toTopOf="@+id/MarketMycoinBox"
-            app:layout_constraintVertical_bias="0.5" />
+    <ImageView
+        android:id="@+id/MarketMycoinImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/sww_coin"
+        app:layout_constraintBottom_toBottomOf="@+id/MarketMycoinBox"
+        app:layout_constraintStart_toStartOf="@+id/MarketMycoinBox"
+        app:layout_constraintTop_toTopOf="@+id/MarketMycoinBox"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <ImageView
-            android:id="@+id/MarketMycoinImage"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/sww_coin"
-            app:layout_constraintBottom_toBottomOf="@+id/MarketMycoinBox"
-            app:layout_constraintStart_toStartOf="@+id/MarketMycoinBox"
-            app:layout_constraintTop_toTopOf="@+id/MarketMycoinBox"
-            app:layout_constraintVertical_bias="0.5" />
+    <ImageView
+        android:id="@+id/MarketItemImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/sww_item"
+        app:layout_constraintBottom_toBottomOf="@+id/MarketMycollectionBox"
+        app:layout_constraintStart_toStartOf="@+id/MarketMycollectionBox"
+        app:layout_constraintTop_toTopOf="@+id/MarketMycollectionBox"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <ImageView
-            android:id="@+id/MarketItemImage"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/sww_item"
-            app:layout_constraintBottom_toBottomOf="@+id/MarketMycollectionBox"
-            app:layout_constraintStart_toStartOf="@+id/MarketMycollectionBox"
-            app:layout_constraintTop_toTopOf="@+id/MarketMycollectionBox"
-            app:layout_constraintVertical_bias="0.5" />
+    <ImageView
+        android:id="@+id/MarketNewBoxImage"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="207dp"
+        android:src="@drawable/market_jibbitsnewbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/MarketNewBoxImage"
-            android:layout_width="350dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="207dp"
-            android:src="@drawable/market_jibbitsnewbox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/marketNewBoxImage"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="407dp"
+        android:src="@drawable/market_jibbitsbox"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/marketNewBoxImage"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="407dp"
-            android:src="@drawable/market_jibbitsbox"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MarketNewItemRecyclerView"
+        android:layout_width="330dp"
+        android:layout_height="110dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/MarketNewBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/MarketNewBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/MarketNewBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/MarketNewBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/MarketNewItemRecyclerView"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="@+id/MarketNewBoxImage"
-            app:layout_constraintEnd_toEndOf="@+id/MarketNewBoxImage"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/MarketNewBoxImage"
-            app:layout_constraintTop_toTopOf="@+id/MarketNewBoxImage"
-            app:layout_constraintVertical_bias="0.5" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MarketAllItemRecyclerView"
+        android:layout_width="340dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="10dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/marketNewBoxImage"
+        app:layout_constraintEnd_toEndOf="@+id/marketNewBoxImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/marketNewBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/marketNewBoxImage"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/MarketAllItemRecyclerView"
-            android:layout_width="340dp"
-            android:layout_height="290dp"
-            android:layout_marginStart="10dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="@+id/marketNewBoxImage"
-            app:layout_constraintEnd_toEndOf="@+id/marketNewBoxImage"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/marketNewBoxImage"
-            app:layout_constraintTop_toTopOf="@+id/marketNewBoxImage"
-            app:layout_constraintVertical_bias="0.5" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="180dp"
-            android:layout_height="90dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="47dp"
-            android:src="@drawable/sww_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="47dp"
+        android:src="@drawable/sww_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

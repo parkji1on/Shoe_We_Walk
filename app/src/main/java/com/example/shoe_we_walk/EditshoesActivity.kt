@@ -331,12 +331,6 @@ class EditshoesActivity : AppCompatActivity() {
                 cntarray[10]++
             }
         }
-
-        fun reloadActivity() {
-            val intent = intent
-            finish()
-            startActivity(intent)
-        }
     }
 
     //아이템 위치값 업데이트

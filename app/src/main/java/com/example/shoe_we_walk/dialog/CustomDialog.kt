@@ -8,10 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.shoe_we_walk.Data.Auth
 import com.example.shoe_we_walk.Data.Work
-import com.example.shoe_we_walk.databinding.DialogWorkfinishBinding
 
-class FinishWorkDialog(data:Work) : DialogFragment(){
-
+class FinishWorkDialog(data:Work) : DialogFragment() {
+}/*
     private lateinit var binding: DialogWorkfinishBinding
     private val data = data
 //    lateinit var listener: DialogOKClickedListener
@@ -56,7 +55,7 @@ class FinishWorkDialog(data:Work) : DialogFragment(){
         return binding.root
     }
 
-    /* 외부에서 updateBtn을 클릭했을 때 사용할 수 있게 만들어 놓은 listener
+    *//* 외부에서 updateBtn을 클릭했을 때 사용할 수 있게 만들어 놓은 listener
     fun setOnOKClickedListener(listener: () -> Unit){
         this.listener = object: DialogOKClickedListener{
             override fun onOKClicked() {
@@ -66,9 +65,9 @@ class FinishWorkDialog(data:Work) : DialogFragment(){
 
     interface DialogOKClickedListener {
         fun onOKClicked()
-    }*/
+    }*//*
 }
-
+*/
 /*
 class FinishWorkDialog(private val context: AppCompatActivity){
     private lateinit var binding : DialogWorkfinishBinding

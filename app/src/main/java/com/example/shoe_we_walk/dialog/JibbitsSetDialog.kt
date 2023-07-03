@@ -7,8 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.shoe_we_walk.Data.Auth
+import com.example.shoe_we_walk.Data.ItemLocRegisterRequest
+import com.example.shoe_we_walk.Data.MessageResponse
 import com.example.shoe_we_walk.R
+import com.example.shoe_we_walk.Retrofit.RetrofitClient
+import com.example.shoe_we_walk.Util.errormessage
+import com.example.shoe_we_walk.Util.failuremessage
 import com.example.shoe_we_walk.adapter.MyAbleJibbitsData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
     private val dialog = Dialog(context, R.style.CustomDialog)
@@ -90,7 +98,14 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_1 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
                     dialog.cancel()
                 }
             }
@@ -105,7 +120,15 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_2 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
+                    dialog.cancel()
                     dialog.cancel()
                 }
             }
@@ -120,7 +143,15 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_3 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
+                    dialog.cancel()
                     dialog.cancel()
                 }
             }
@@ -135,7 +166,15 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_4 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
+                    dialog.cancel()
                     dialog.cancel()
                 }
             }
@@ -150,7 +189,15 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_5 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
+                    dialog.cancel()
                     dialog.cancel()
                 }
             }
@@ -165,7 +212,15 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_6 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
+                    dialog.cancel()
                     dialog.cancel()
                 }
             }
@@ -180,7 +235,15 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_7 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
+                    dialog.cancel()
                     dialog.cancel()
                 }
             }
@@ -195,7 +258,15 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_8 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
+                    dialog.cancel()
                     dialog.cancel()
                 }
             }
@@ -210,7 +281,14 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_9 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
                     dialog.cancel()
                 }
             }
@@ -225,10 +303,35 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
                     Auth.locationdata.value?.location_10 = item.code
                     Toast.makeText(context, "해당 위치에 장착하였습니다.", Toast.LENGTH_SHORT).show()
                     dialogListener?.onDialogOkClicked()
-                    Auth.setchangeFlag()
+                    updateItemLoc(
+                        ItemLocRegisterRequest(Auth.user_id, Auth.locationdata.value!!.location_1,
+                            Auth.locationdata.value!!.location_2, Auth.locationdata.value!!.location_3,
+                            Auth.locationdata.value!!.location_4, Auth.locationdata.value!!.location_5,
+                            Auth.locationdata.value!!.location_6, Auth.locationdata.value!!.location_7,
+                            Auth.locationdata.value!!.location_8, Auth.locationdata.value!!.location_9,
+                            Auth.locationdata.value!!.location_10)
+                    )
                     dialog.cancel()
                 }
             }
         }
     }
+
+
+    private fun updateItemLoc(itemLocRegisterRequest : ItemLocRegisterRequest){
+        RetrofitClient.getRetrofitService.updateItemLoc(itemLocRegisterRequest).enqueue(object :
+            Callback<MessageResponse> {
+            override fun onResponse(call: Call<MessageResponse>, response: Response<MessageResponse>) {
+                if(response.isSuccessful){
+                    if(response.code() == 200)
+                    {
+                        Auth.setchangeFlag()
+                    }
+                }
+            }
+            override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+            }
+        })
+    }
+
 }

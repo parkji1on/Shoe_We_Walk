@@ -15,16 +15,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.shoe_we_walk.Data.Auth
 import com.example.shoe_we_walk.Data.Auth.loginflag
-import com.example.shoe_we_walk.Data.Auth.nickname
 import com.example.shoe_we_walk.Data.Auth.profileImage
 import com.example.shoe_we_walk.Retrofit.getWeekWork
 import com.example.shoe_we_walk.EditprofileActivity
+import com.example.shoe_we_walk.LoginActivity
 import com.example.shoe_we_walk.R
 import com.example.shoe_we_walk.Retrofit.getMonthWork
 import com.example.shoe_we_walk.Retrofit.getYearWork
 import com.example.shoe_we_walk.Util.CircleTransformation
 import com.example.shoe_we_walk.Util.MyXAxisFormatter
-import com.example.shoe_we_walk.Util.user
 import com.example.shoe_we_walk.databinding.FragmentProfileBinding
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
@@ -33,7 +32,6 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.selects.select
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -61,14 +59,43 @@ class ProfileFragment : Fragment() {
 
         val titlename: TextView = binding.ProfileUserTitleText
 
-        if (loginflag) {
-            titlename.text = nickname
+        Auth.loginFlag.observe(viewLifecycleOwner) { flag ->
+            titlename.text = Auth.user_name.value
             val imageView: ImageView = binding.ProfileUserImage
             Picasso.get()
                 .load(profileImage)
                 .transform(CircleTransformation())
                 .into(imageView)
+
+
+            binding.chartTitleTv.visibility = View.VISIBLE
+            binding.chartDateTv.visibility = View.VISIBLE
+            binding.workBchart.visibility = View.VISIBLE
+            binding.periodSelectBtn.visibility = View.VISIBLE
+
+            //처음 차트 값 설정
+            var period :Int = 0
+            var max :Float = 0.0f
+            getWeekWork(Auth.user_id, completion = { weekStepNum, s ->
+                data = weekStepNum.changeData()
+                binding.chartTitleTv.text = "일별 운동 기록"
+                for(i in data){
+                    if(max < i.y){
+                        max = i.y
+                    }
+                }
+                makeChart(binding.workBchart, period, data, max)
+            })
         }
+
+        binding.ProfileUserTitleText.setOnClickListener{
+            if(!loginflag)
+            {
+                val intent = Intent(activity, LoginActivity::class.java)
+                startActivity(intent)//로그인 시작
+            }
+        }
+
         val editbtn :ImageView = binding.ProfileEditImage
         editbtn.setOnClickListener {
             if(loginflag) {
@@ -128,12 +155,29 @@ class ProfileFragment : Fragment() {
             binding.periodSelectBtn.visibility = View.GONE
         }
 
-        binding.chartTitleTv.text = "Activity Records"
+        binding.chartTitleTv.text = "운동 기록"
+
+
+        //처음 차트 값 설정
+        var period :Int = 0
+        var max :Float = 0.0f
+        getWeekWork(Auth.user_id, completion = { weekStepNum, s ->
+            data = weekStepNum.changeData()
+            binding.chartTitleTv.text = "일별 운동 기록"
+            for(i in data){
+                if(max < i.y){
+                    max = i.y
+                }
+            }
+            makeChart(binding.workBchart, period, data, max)
+        })
+
+
 //        서버와 통신 -> 현재 날짜와 user_id를 보내면 반환문으로 그에 대한 데이터가 들어온다. -> 가장 처음 들어왔을 때는 1주일치에 대한 데이터
         binding.periodSelectBtn.setOnClickListener{
 //            Radio dialog로 일단위/주단위/월단위 데이터 선택하기
-            var period: Int = 0
-            var max: Float = 0f
+            period = 0
+            max = 0f
 
             AlertDialog.Builder(requireContext(), R.style.RadioDialog)
                 .setSingleChoiceItems(selectPeriod, selectPeriodIdx) { _, which ->
@@ -145,7 +189,7 @@ class ProfileFragment : Fragment() {
                         0 -> {
                             getWeekWork(Auth.user_id, completion = { weekStepNum, s ->
                                 data = weekStepNum.changeData()
-                                binding.chartTitleTv.text = "Daily Activity Records"
+                                binding.chartTitleTv.text = "일별 운동 기록"
                                 for(i in data){
                                     if(max < i.y){
                                         max = i.y
@@ -156,7 +200,7 @@ class ProfileFragment : Fragment() {
                         1 -> {
                             getMonthWork(Auth.user_id, completion = { monthStepNum, s ->
                                 data = monthStepNum.changeData()
-                                binding.chartTitleTv.text = "Weekly Activity Records"
+                                binding.chartTitleTv.text = "주별 운동 기록"
                                 for(i in data){
                                     if(max < i.y){
                                         max = i.y
@@ -168,7 +212,7 @@ class ProfileFragment : Fragment() {
                         2 -> {
                             getYearWork(Auth.user_id, completion = { yearStepNum, s ->
                                 data = yearStepNum.changeData()
-                                binding.chartTitleTv.text = "Monthly Activity Records"
+                                binding.chartTitleTv.text = "월별 운동 기록"
                                 for(i in data){
                                     if(max < i.y){
                                         max = i.y
@@ -186,6 +230,10 @@ class ProfileFragment : Fragment() {
                 }
                 .setCancelable(false)           //다른 곳은 못 누르게 설정
                 .show()
+                .apply {
+                    getButton(AlertDialog.BUTTON_POSITIVE)?.setTextColor(Color.WHITE) // 확인 버튼의 텍스트 색상 설정
+                }
+
         }
     }
 

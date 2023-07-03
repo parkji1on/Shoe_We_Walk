@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -11,18 +12,31 @@ import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.shoe_we_walk.Data.Auth
+import com.example.shoe_we_walk.Data.MessageResponse
+import com.example.shoe_we_walk.Data.Work
+import com.example.shoe_we_walk.Data.WorkRegisterRequest
+import com.example.shoe_we_walk.Retrofit.RetrofitClient
+import com.example.shoe_we_walk.Util.getCalorie
 import com.example.shoe_we_walk.Util.getDistance
 import com.example.shoe_we_walk.Util.setStatusBarTransparent
 import com.example.shoe_we_walk.databinding.ActivityWalkBinding
 import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.LocationTrackingMode
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.PolylineOverlay
 import com.naver.maps.map.util.FusedLocationSource
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListener{
     companion object {
@@ -72,7 +86,7 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
         if(stepCountSensor == null) {
             Toast.makeText(this, "No Step Sensor", Toast.LENGTH_SHORT).show()
         }
-        binding.stepCountTv.text = "0"
+        binding.stepCountTv.text = "0걸음"
         binding.stepCountTv.bringToFront()
 
         binding.mapMv.onCreate(savedInstanceState)
@@ -83,23 +97,35 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
 //            운동정보를 가지고 종료해야 함! -> 시간, 거리, 걸음수를 이전 화면으로 보내줘야 함 -> 화면 이동 후 칼로리 계산
             totalTime = SystemClock.elapsedRealtime() - startTime           //ms단위로 나온다.
 
+            registWork(WorkRegisterRequest(Auth.user_id, getCurrentDateTime(), currentStep, totalDistance.toFloat(),getCalorie(Auth.weight.value!!, (totalTime/60000).toInt())))
+
             val resultIntent = Intent()
             resultIntent.putExtra("총 시간", totalTime.toInt())
             resultIntent.putExtra("총 거리", totalDistance)
             resultIntent.putExtra("총 걸음수", currentStep)
+
             setResult(Activity.RESULT_OK, resultIntent)
 
 //            Timer().schedule(1000){}        //1초 뒤에 {}안의 내용 실행
             finish()
 
         }
-    }
 
+
+    }
+    fun getCurrentDateTime(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val currentDate = Date(System.currentTimeMillis())
+        return dateFormat.format(currentDate)
+    }
     override fun onMapReady(naverMap: NaverMap) {
         nMap = naverMap
         naverMap.locationSource = locationSource
 
         naverMap.mapType = NaverMap.MapType.Basic
+        naverMap.moveCamera(CameraUpdate.zoomTo(18.0))
+
+
 //        val marker = Marker()                           //naverMap marker
         val polyline = PolylineOverlay()                //naverMap shape->PolylineOverlay
         val coords = mutableListOf<LatLng>()            //PolylineOverlay의 coords속성
@@ -115,7 +141,8 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
             if(marker.map == null){     //marker를 맵에 표시
                 marker.map = naverMap
             }*/
-
+            val colorHex = "#EC008C"
+            val color = Color.parseColor(colorHex)
 //            사용자의 이동 경로 표시 (PolylineOverlay)
             coords.add(LatLng(location.latitude, location.longitude))
             if(coords.size > 1){        //PolylineOverlay의 coords의 갯수가 2개 이상이 되지 않으면 오류가 발생한다.
@@ -124,6 +151,8 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
                     polyline.width = 10
                     polyline.capType = PolylineOverlay.LineCap.Round
                     polyline.joinType = PolylineOverlay.LineJoin.Round
+                    polyline.color = color
+
                     polyline.map = naverMap
                 }
 
@@ -138,7 +167,7 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
         if(event?.sensor?.type == Sensor.TYPE_STEP_DETECTOR){           //걸음수가 측정될 때 마다 currentStep을 증가시킴
             if(event.values[0] == 1.0f){
                 currentStep++
-                binding.stepCountTv.text = currentStep.toString()
+                binding.stepCountTv.text = currentStep.toString() + "걸음"
             }
         }
     }
@@ -210,5 +239,26 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
         }
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+
+    //work 정보 등록하기
+    fun registWork(workRegisterRequest : WorkRegisterRequest){
+        RetrofitClient.getRetrofitService.registWork(workRegisterRequest).enqueue(object :
+            Callback<MessageResponse> {
+            override fun onResponse(call: Call<MessageResponse>, response: Response<MessageResponse>) {
+                if(response.isSuccessful()){
+                    Log.d("Response:", response.body().toString())
+                }
+                else
+                {
+                    Log.d("Response FAILURE", response.errorBody()!!.string())
+                }
+            }
+
+            override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+                Log.d("CONNECTION FAILURE :", t.localizedMessage?:"Null")
+            }
+        })
     }
 }

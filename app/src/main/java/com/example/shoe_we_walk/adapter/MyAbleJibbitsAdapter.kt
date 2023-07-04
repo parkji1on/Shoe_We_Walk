@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shoe_we_walk.Data.Auth
+import com.example.shoe_we_walk.Data.locationTable
 import com.example.shoe_we_walk.EditshoesActivity
 import com.example.shoe_we_walk.R
 import com.example.shoe_we_walk.dialog.JibbitsSetDialog
@@ -48,10 +51,21 @@ class MyAbleJibbitsAdapter(private val context : Context) :RecyclerView.Adapter<
                 jibbitsImage.setImageResource(R.drawable.jibbits_strawberry_front)
 
             itemView.setOnClickListener{
-                AP = adapterPosition
-                val dialog = JibbitsSetDialog(context, item)
-                dialog.setDialogListener(this@MyAbleJibbitsAdapter)
-                dialog.showDialog()
+                if(Auth.locationdata.value?.location_1 == 0 || Auth.locationdata.value?.location_2 == 0 ||
+                    Auth.locationdata.value?.location_3 == 0 || Auth.locationdata.value?.location_4 == 0 ||
+                    Auth.locationdata.value?.location_5 == 0 || Auth.locationdata.value?.location_6 == 0 ||
+                    Auth.locationdata.value?.location_7 == 0 || Auth.locationdata.value?.location_8 == 0 ||
+                    Auth.locationdata.value?.location_9 == 0 || Auth.locationdata.value?.location_10 == 0)
+                {
+                    AP = adapterPosition
+                    val dialog = JibbitsSetDialog(context, item)
+                    dialog.setDialogListener(this@MyAbleJibbitsAdapter)
+                    dialog.showDialog()
+                }
+                else
+                {
+                    Toast.makeText(context, "지비츠를 장착할 공간이 없습니다.",Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <!-- 위치 정보 동의 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 걸음수 측정을 위한 센서 동의 -->
@@ -17,6 +18,11 @@
         android:theme="@style/Theme.Shoe_We_Walk"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <service
+            android:name=".WalkService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

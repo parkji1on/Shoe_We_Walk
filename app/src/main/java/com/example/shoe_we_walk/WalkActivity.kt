@@ -26,6 +26,8 @@ import com.example.shoe_we_walk.Util.getDistance
 import com.example.shoe_we_walk.Util.setStatusBarTransparent
 import com.example.shoe_we_walk.databinding.ActivityWalkBinding
 import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.CameraAnimation
+import com.naver.maps.map.CameraPosition
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.LocationTrackingMode
 import com.naver.maps.map.NaverMap
@@ -40,8 +42,8 @@ import java.util.*
 
 class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListener{
     companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
-        private const val ACTIVITY_RECOGNITION_REQUEST_CODE = 100
+        const val LOCATION_PERMISSION_REQUEST_CODE = 1000
+        const val ACTIVITY_RECOGNITION_REQUEST_CODE = 100
     }
 
     private lateinit var binding: ActivityWalkBinding
@@ -113,11 +115,13 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
 
 
     }
+
     fun getCurrentDateTime(): String {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val currentDate = Date(System.currentTimeMillis())
         return dateFormat.format(currentDate)
     }
+
     override fun onMapReady(naverMap: NaverMap) {
         nMap = naverMap
         naverMap.locationSource = locationSource
@@ -133,14 +137,12 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
 //        naverMap SDK에 미리 만들어져 있는 위치 추적 기능을 켰다.
         naverMap.locationTrackingMode = LocationTrackingMode.Follow
 
+
 //        Map의 위치가 변경한 경우
         naverMap.addOnLocationChangeListener { location ->
+            naverMap.moveCamera(CameraUpdate.scrollTo(LatLng(location.latitude, location.longitude)).animate(CameraAnimation.Easing))
 
-//            사용자의 가장 마지막 위치 표시 (Marker)
-            /*marker.position = LatLng(location.latitude, location.longitude)
-            if(marker.map == null){     //marker를 맵에 표시
-                marker.map = naverMap
-            }*/
+//
             val colorHex = "#EC008C"
             val color = Color.parseColor(colorHex)
 //            사용자의 이동 경로 표시 (PolylineOverlay)
@@ -148,11 +150,10 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
             if(coords.size > 1){        //PolylineOverlay의 coords의 갯수가 2개 이상이 되지 않으면 오류가 발생한다.
                 polyline.coords = coords
                 if(polyline.map == null){       //PolylineOverlay를 맵에 표시
-                    polyline.width = 10
+                    polyline.width = 30
                     polyline.capType = PolylineOverlay.LineCap.Round
                     polyline.joinType = PolylineOverlay.LineJoin.Round
                     polyline.color = color
-
                     polyline.map = naverMap
                 }
 
@@ -161,6 +162,8 @@ class WalkActivity : AppCompatActivity(), OnMapReadyCallback, SensorEventListene
                 totalDistance += getDistance(coords[index-1].latitude,coords[index-1].longitude,coords[index].latitude,coords[index].longitude)
             }
         }
+
+
     }
 
     override fun onSensorChanged(event: SensorEvent?) {

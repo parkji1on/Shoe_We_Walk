@@ -61,21 +61,130 @@ class JibbitsSetDialog(context : Context, val item : MyAbleJibbitsData) {
             10 to R.drawable.jibbits_guide_10
         )
 
-        leftbtn.setOnClickListener {
-            if(cnt == 1)
-                cnt = 10
-            else
-                cnt--
+        //초기 상태 세팅
+        while(true)
+        {
+            when(cnt)
+            {
+                1 -> {
+                    if(Auth.locationdata.value?.location_1 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                2 -> {
+                    if(Auth.locationdata.value?.location_2 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                3 -> {
+                    if(Auth.locationdata.value?.location_3 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                4 -> {
+                    if(Auth.locationdata.value?.location_4 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                5 -> {
+                    if(Auth.locationdata.value?.location_5 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                6 -> {
+                    if(Auth.locationdata.value?.location_6 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                7 -> {
+                    if(Auth.locationdata.value?.location_7 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                8 -> {
+                    if(Auth.locationdata.value?.location_8 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                9 -> {
+                    if(Auth.locationdata.value?.location_9 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                10 -> {
+                    if(Auth.locationdata.value?.location_10 == 0)
+                        break;
+                    else
+                        cnt++
+                }
+                else -> {
+                    cnt = 1
+                    break;
+                }
+            }
+        }
+        helperImage.setImageResource(imageResourceMap[cnt]!!) //처음 빈공간 이미지 설정
+        num.text = cnt.toString()                             //처음 빈공간 숫자 설정
 
+        leftbtn.setOnClickListener {
+
+            while (true) {
+                if (cnt == 1)
+                    cnt = 10
+                else
+                    cnt--
+
+                when(cnt)
+                {
+                    1 -> if(Auth.locationdata.value?.location_1 == 0) break;
+                    2 -> if(Auth.locationdata.value?.location_2 == 0) break;
+                    3 -> if(Auth.locationdata.value?.location_3 == 0) break;
+                    4 -> if(Auth.locationdata.value?.location_4 == 0) break;
+                    5 -> if(Auth.locationdata.value?.location_5 == 0) break;
+                    6 -> if(Auth.locationdata.value?.location_6 == 0) break;
+                    7 -> if(Auth.locationdata.value?.location_7 == 0) break;
+                    8 -> if(Auth.locationdata.value?.location_8 == 0) break;
+                    9 -> if(Auth.locationdata.value?.location_9 == 0) break;
+                    10 -> if(Auth.locationdata.value?.location_10 == 0) break;
+                }
+            }
             helperImage.setImageResource(imageResourceMap[cnt]!!)
             num.text = cnt.toString()
 
         }
         rightbtn.setOnClickListener {
-            if(cnt == 10)
-                cnt = 1
-            else
-                cnt++
+            while(true)
+            {
+
+                if(cnt == 10)
+                    cnt = 1
+                else
+                    cnt++
+
+                when(cnt)
+                {
+                    1 -> if(Auth.locationdata.value?.location_1 == 0) break;
+                    2 -> if(Auth.locationdata.value?.location_2 == 0) break;
+                    3 -> if(Auth.locationdata.value?.location_3 == 0) break;
+                    4 -> if(Auth.locationdata.value?.location_4 == 0) break;
+                    5 -> if(Auth.locationdata.value?.location_5 == 0) break;
+                    6 -> if(Auth.locationdata.value?.location_6 == 0) break;
+                    7 -> if(Auth.locationdata.value?.location_7 == 0) break;
+                    8 -> if(Auth.locationdata.value?.location_8 == 0) break;
+                    9 -> if(Auth.locationdata.value?.location_9 == 0) break;
+                    10 -> if(Auth.locationdata.value?.location_10 == 0) break;
+                }
+
+            }
 
             helperImage.setImageResource(imageResourceMap[cnt]!!)
             num.text = cnt.toString()
